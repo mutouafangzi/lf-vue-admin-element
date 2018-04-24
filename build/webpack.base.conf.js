@@ -136,7 +136,7 @@ module.exports = {
         // url-loader的配置选项
         options: {
           // 文件的大小小于10000字节(10kb)的时候会返回一个dataUrl
-          limit: 10000,
+          limit: 50000,
           // 生成的文件的保存路径和后缀名称
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
@@ -150,6 +150,11 @@ module.exports = {
           name: utils.assetsPath('media/[name].[hash:7].[ext]')
         }
       },
+      /* {
+        //对sass文件打包编译
+        test: /\.sass$/,
+        loaders: ['style', 'css', 'sass']
+      }, */
       {
         // 对字体文件进行打包编译
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,

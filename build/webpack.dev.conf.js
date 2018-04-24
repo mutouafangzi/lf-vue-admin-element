@@ -40,6 +40,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
     }),
+    //热加载插件
     new webpack.HotModuleReplacementPlugin(),
     //引入jquery后需要的配置
     new webpack.ProvidePlugin({
