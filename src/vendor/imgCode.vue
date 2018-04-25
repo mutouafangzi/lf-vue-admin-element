@@ -16,7 +16,7 @@ export default {
         default: [1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f","j","h","i","g","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
       }, */
 
-      
+
       //随机数字体大小的范围
       fontSizeMin: 25,
       /* {
@@ -163,12 +163,12 @@ export default {
     //刷新整个页面
     refreshCode(){
       console.log('强制刷新')
-      this.$forceUpdate()
+      this.drawPic()
     }
   },
 
   watch: {
-    imgCodeCode () {
+    imgCode () {
         this.drawPic()
       }
   },

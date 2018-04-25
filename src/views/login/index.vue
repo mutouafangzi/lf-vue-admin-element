@@ -14,23 +14,24 @@
             </el-form-item>
             <el-form-item prop="authCode">
               <el-input v-model="loginForm.authCode" prefix-icon="iconfont icon-auth-code" style="display:inline-block;width:70%"></el-input>
-              
-              <div id="qrcode"  
+
+              <div id="qrcode"
+                   @click="refreshCode"
               style="display:inline-block;width:100px;height:40px;vertical-align:middle">
-                <ImgCode 
-                :identifyCode="identifyCode" 
-                :width="contentWidth" 
+                <ImgCode
+                :identifyCode="identifyCode"
+                :width="contentWidth"
                 :height="contentHeight"
-                :click="refreshCode"></ImgCode>
+                ref="identifyCode"></ImgCode>
               </div>
             </el-form-item>
             <el-form-item prop="isRember">
               <el-checkbox v-model="loginForm.isRember">记住用户名</el-checkbox>
             </el-form-item>
-            <el-button></el-button>
+            <el-button type="primary">开始登陆</el-button>
           </el-form>
         </div>
-        
+
       </el-main>
     </el-container>
   </div>
@@ -39,7 +40,7 @@
 <script>
 
 //二维码组件
-import ImgCode from '@/vendor/imgCode' 
+import ImgCode from '@/vendor/imgCode'
 
 export default {
   data () {
@@ -60,12 +61,14 @@ export default {
     //二维码生成
     /* randomNum(min, max) {
       return Math.floor(Math.random() * (max - min) + min);
-    },
+    },*/
     refreshCode() {
-      this.identifyCode = "";
-      this.makeCode(this.identifyCodes, 4);
+      console.log('hhh')
+      this.$refs.identifyCode.refreshCode()
+      /*this.identifyCode = "";
+      this.makeCode(this.identifyCodes, 4);*/
     },
-    makeCode(o, l) {
+    /*makeCode(o, l) {
       for (let i = 0; i < l; i++) {
         this.identifyCode += this.identifyCodes[
           this.randomNum(0, this.identifyCodes.length)
@@ -73,7 +76,7 @@ export default {
       }
       console.log(this.identifyCode);
     } */
-    
+
   },
 
   mounted () {
@@ -146,9 +149,9 @@ export default {
           }
         }
       }
-      
+
     }
   }
-  
+
 
 </style>
