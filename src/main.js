@@ -8,8 +8,12 @@ import ElementUI from 'element-ui'
 import "element-ui/lib/theme-chalk/index.css"
 import locale from 'element-ui/lib/locale/lang/en'
 import "normalize.css"
+import "./assets/iconfont/iconfont.css"
+//二维码插件
+//import ImgCode from './vendor/imgCode'  
 
 Vue.use(ElementUI, { locale });
+//Vue.use(ImgCode)
 
 Vue.config.productionTip = false
 

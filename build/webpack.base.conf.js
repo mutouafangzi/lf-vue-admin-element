@@ -155,6 +155,16 @@ module.exports = {
         test: /\.sass$/,
         loaders: ['style', 'css', 'sass']
       }, */
+      /* {
+        test: /\.css$/,
+        use: [  {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1
+          }
+        },
+        'postcss-loader']
+      }, */
       {
         // 对字体文件进行打包编译
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
