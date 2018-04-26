@@ -1,12 +1,24 @@
 <!--  -->
 <template>
-  <div class="img-canvas">
-    <canvas id="qrcanvas" :width="contentWidth" :height="contentHeight" @click.native="refreshCode"></canvas>
+  <div class="img-canvas" :width="contentWidth" :height="contentHeight">
+    <canvas id="qrcanvas" :width="contentWidth" :height="contentHeight"></canvas>
   </div>
 </template>
 
 <script>
 export default {
+
+   //接收父组件传来的数据，二维码的宽和高
+  props:{
+    contentWidth:{
+      type:Number,
+      require: true
+    },
+    contentHeight:{
+      type:Number,
+      require: true
+    }
+  },
   data () {
     return {
       //imgCode
@@ -75,18 +87,7 @@ export default {
       } */
     };
   },
-  //接收父组件传来的数据，二维码的宽和高
-  props:{
-    contentWidth:{
-        type: Number,
-        default: 100
-      },
-    contentHeight:{
-        type: Number,
-        default: 40
-      }
-    },
-
+ 
   methods: {
     //生成随机数
     randomNum(min,max){
@@ -173,7 +174,7 @@ export default {
       }
   },
   mounted () {
-     this.drawPic()
+    this.drawPic()
   },
 
   computed: {},

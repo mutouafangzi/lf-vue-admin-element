@@ -26,7 +26,7 @@ const user = {
       state.roles = roles
     }
   },
-  action:{
+  actions:{
     //登录
     Login({commit},userInfo){
       const username = userInfo.username.trim();

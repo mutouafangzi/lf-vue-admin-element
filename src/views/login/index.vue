@@ -6,32 +6,31 @@
       <el-main>
         <div>
           <el-form ref="loginForm" :model="loginForm" class="login-form">
-            <el-form-item prop="loginName">
-              <el-input v-model="loginForm.loginName" prefix-icon="iconfont icon-yonghu"></el-input>
+            <el-form-item prop="username">
+              <el-input v-model="loginForm.username" prefix-icon="iconfont icon-yonghu"></el-input>
             </el-form-item>
-            <el-form-item prop="loginPassword">
-              <el-input v-model="loginForm.loginPassword" prefix-icon="iconfont icon-mima"></el-input>
+            <el-form-item prop="password">
+              <el-input v-model="loginForm.password" prefix-icon="iconfont icon-mima"></el-input>
             </el-form-item>
             <el-form-item prop="authCode">
               <el-input v-model="loginForm.authCode" prefix-icon="iconfont icon-auth-code" style="display:inline-block;width:70%"></el-input>
-
               <div id="qrcode"
                    @click="refreshCode"
-              style="display:inline-block;width:100px;height:40px;vertical-align:middle">
+                  style="display:inline-block;width:100px;height:40px;vertical-align:middle">
                 <ImgCode
                 :identifyCode="identifyCode"
-                :width="contentWidth"
-                :height="contentHeight"
+                v-bind:contentWidth="contentWidth"
+                v-bind:contentHeight="contentHeight"
                 ref="identifyCode"></ImgCode>
               </div>
             </el-form-item>
             <el-form-item prop="isRember">
-              <el-checkbox v-model="loginForm.isRember">记住用户名</el-checkbox>
+              <el-checkbox v-model="loginForm.isRember" style="display:inline-block;">记住用户名</el-checkbox>
+              <div style="display:inline-block;width:100px;margin-left:150px;"><a href="####">忘记密码</a></div>
             </el-form-item>
-            <el-button type="primary">开始登陆</el-button>
+            <el-button type="primary" style="width:380px;margin-left:30px" @click="handleLogin">登陆</el-button>
           </el-form>
         </div>
-
       </el-main>
     </el-container>
   </div>
@@ -45,13 +44,18 @@ import ImgCode from '@/vendor/imgCode'
 export default {
   data () {
     return {
-      loginForm:{},
+      loginForm:{
+        username: 'admin',
+        password: 'admin',
+        isRember: '',
+        authCode: '',
+      },
       //随机数
       identifyCodes: "1234567890",
       identifyCode: "",
       //随机码的长和宽，需要传给子组件
       contentWidth: 100,
-      contentHeight: 45,
+      contentHeight: 40,
     }
   },
 
@@ -68,14 +72,17 @@ export default {
       /*this.identifyCode = "";
       this.makeCode(this.identifyCodes, 4);*/
     },
-    /*makeCode(o, l) {
-      for (let i = 0; i < l; i++) {
-        this.identifyCode += this.identifyCodes[
-          this.randomNum(0, this.identifyCodes.length)
-        ];
-      }
-      console.log(this.identifyCode);
-    } */
+    //登录按钮
+    handleLogin(){
+      console.log('点击了')
+      this.$store.dispatch('Login', this.loginForm)
+      .then(() => {
+        this.$router.push({ path: '/' })
+      })
+      .catch(() => {
+        console.log('error');
+      })
+    }
 
   },
 
