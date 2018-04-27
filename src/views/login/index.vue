@@ -77,10 +77,11 @@ export default {
       console.log('点击了')
       this.$store.dispatch('Login', this.loginForm)
       .then(() => {
+        console.log('成功')
         this.$router.push({ path: '/' })
       })
       .catch(() => {
-        console.log('error');
+        console.log('失败error');
       })
     }
 

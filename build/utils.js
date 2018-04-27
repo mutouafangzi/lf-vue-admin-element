@@ -127,7 +127,7 @@ exports.createNotifierCallback = function () {
     if (severity !== 'error') {
       return
     }
-    const error = errors[0]
+    /* const error = errors[0]
 
     const filename = error.file && error.file.split('!').pop()
     // 需要展示的错误信息的内容
@@ -140,6 +140,6 @@ exports.createNotifierCallback = function () {
       subtitle: filename || '',
       // 通知展示的icon
       icon: path.join(__dirname, 'logo.png')
-    })
+    }) */
   }
 }

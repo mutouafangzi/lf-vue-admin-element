@@ -12,10 +12,17 @@ export default new Router({
       component: () => import('@/views/login/index.vue'),
       hidden: true
     },
+    //{ path: '/404', component: () => import('@/views/404'), hidden: true },
     {
       path: '/',
-      name: '首页',
       component: Layout,
+      redirect: '/dashboard',
+      name: 'Dashboard',
+      hidden: true,
+      children: [{
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index')
+      }]
     }
   ]
 })
