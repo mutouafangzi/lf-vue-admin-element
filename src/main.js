@@ -4,15 +4,24 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import ElementUI from 'element-ui'
-import "element-ui/lib/theme-chalk/index.css"
-import locale from 'element-ui/lib/locale/lang/en'
+
+//引入一些css文件
 import "normalize.css"
 import "./assets/iconfont/iconfont.css"
 //二维码插件
 //import ImgCode from './vendor/imgCode'  
 
+//引入其他的组件
+import ElementUI from 'element-ui'
+//英语语言
+import locale from 'element-ui/lib/locale/lang/en'
+// 引入echarts
+import echarts from 'echarts'
+import "element-ui/lib/theme-chalk/index.css"
+
+
 Vue.use(ElementUI, { locale });
+Vue.prototype.$echarts = echarts 
 //Vue.use(ImgCode)
 
 Vue.config.productionTip = false

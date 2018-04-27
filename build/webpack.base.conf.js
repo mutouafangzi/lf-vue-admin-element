@@ -4,6 +4,8 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+//引入了jquery，所以先引入webpack会用到
+const webpack = require('webpack')
 
 // 生成相对于根目录的绝对路径
 function resolve (dir) {
@@ -72,7 +74,9 @@ module.exports = {
       'router': path.resolve(__dirname, '../src/router'),
       'mock': path.resolve(__dirname, '../src/mock'),
       'vendor': path.resolve(__dirname, '../src/vendor'),
-      'static': path.resolve(__dirname, '../static')
+      'static': path.resolve(__dirname, '../static'),
+      // 2. 定义别名和插件位置
+      'jquery': 'jquery',
     }
   },
   // 下面是针对具体的模块进行的具体的配置
@@ -175,5 +179,14 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    // 3. 配置全局使用 jquery
+    new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+        jquery: "jquery",
+        "window.jQuery": "jquery"
+    })
+  ]
 }
