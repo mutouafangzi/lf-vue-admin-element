@@ -37,14 +37,26 @@ import { mapGetters } from 'vuex'
 import html2Canvas from "html2canvas"  
 import JsPDF from "jspdf" 
 
-require("@/vendor/toPDF/pdfmake.js")
+/* require('pdfmake/build/pdfmake.js');
+require('pdfmake/build/vfs_fonts.js'); */
+require('@/vendor/toPDF/pdfmake.min.js')
+require("@/vendor/toPDF/vfs_fonts.js")
+/* import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts"; */
+//pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 
 
 export default {
   name: 'dashboard',
   data () {
     return {
-      
+      completenum : 0,
+      totalnum : 0,
+      imgdata : [],
+      emptyobj : {},
+      oncomplete : function(){},
+      getDataURL : function(){},
     }
   },
   methods:{
@@ -95,16 +107,188 @@ export default {
     },
     /* 使用PDFmake点击下载事件 */
     userPdfmakeDownLoad(){
-      console.log(pdfMake)
-      var dd = {
-        content: [
-            'One paragraph',
-            'Another paragraph, this time a little bit longer to make  sure, this line will be divided into at least two lines'
-            ]
-        };
-      //导出PDF
-      pdfMake.createPdf(dd).download();
+      console.log(pdfMake,pdfMake.vfs)
+      /* pdfMake.fonts = {
+        微软雅黑: {
+          normal: 'msyh.ttf',
+          bold: 'msyh.ttf',
+          italics: 'msyh.ttf',
+          bolditalics: 'msyh.ttf',
+        }
+      }; */
+      var imgs = new Array();
+      var canvas = $("#barChart").find("canvas").first()[0];;
+      console.log(canvas)
+      imgs.push(canvas.toDataURL('image/jpeg', 1.0))
+      let content = {
+          content: [
+              {text: 'student dangan', fontSize: 22, style: 'subheader', color: '#36B7AB', alignment: 'center'},
+              {text: 'base inform', fontSize: 15, style: 'subheader', color: '#36B7AB'},
+              {
+                  style: 'tableExample',
+                  table: {
+                      widths: [100, 60, 55, '*', '*', '*', 100],
+                      body: [
+                          [{text: '学号：123456789123', fontSize: 8, margin: [0, 11, 0, 11]},
+                              {text: 'name：ZS', fontSize: 8, margin: [0, 11, 0, 11]},
+                              {text: 'sex：man', fontSize: 8, margin: [0, 11, 0, 11]},
+                              {text: 'minzu：huizu', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {},
+                              {text: 'hunfou：IS', fontSize: 8, margin: [0, 11, 0, 11]},
+                              imgs[0],
+                          ],
+                          [{text: 'shenfenzheng：654125321453625478', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {},
+                              {text: 'chushengriqi：1881-12-31', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {},
+                              {text: 'chengdu：gaozhong', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {}],
+                          [{text: 'email：23412341234@qq.com', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {},
+                              {text: 'lianxifangshi：123-4124-1243', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {},
+                              {text: 'QQ：23412341234', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {}],
+                      ]
+                  }
+              },
+          ],
+          /* styles: {
+              header: {
+                  fontSize: 18,
+                  //bold: true,
+                  margin: [0, 0, 0, 10]
+              },
+              subheader: {
+                  fontSize: 16,
+                  //bold: true,
+                  margin: [0, 10, 0, 5]
+              },
+              tableExample: {
+                  margin: [0, 5, 0, 15]
+              },
+              tableHeader: {
+                  //bold: true,
+                  fontSize: 13,
+                  color: 'black'
+              }
+          }, */
+          /* defaultStyle: {
+   	         font: '微软雅黑'
+   	      } */
+      }
+      pdfMake.createPdf(content).download();
+      //图片格式转换
+        /* var x = this.ImageDataURL(["./人生3.jpg","./人生3.jpg","./人生3.jpg"]);
+        x.oncomplete = function () {
+            var imgs = new Array();
+            for (let key in this.imgdata) {
+                if (this.imgdata[key] == this.emptyobj) {
+                    imgs.push({text: '请上传头像', fontSize: 10, rowSpan: 3});
+                    continue;
+                }//不存在的圖片直接忽略
+                imgs.push({image: this.imgdata[key], fit: [100, 150], rowSpan: 3});//在的圖片直接忽略
+            }
+            var content = {
+                content: [
+                    {text: '学生档案', fontSize: 22, style: 'subheader', color: '#36B7AB', alignment: 'center'},
+                    {text: '基本信息', fontSize: 15, style: 'subheader', color: '#36B7AB'},
+                    {
+                        style: 'tableExample',
+                        table: {
+                            widths: [100, 60, 55, '*', '*', '*', 100],
+                            body: [
+                                [{text: '学号：123456789123', fontSize: 8, margin: [0, 11, 0, 11]},
+                                    {text: '姓名：张三', fontSize: 8, margin: [0, 11, 0, 11]},
+                                    {text: '性别：男', fontSize: 8, margin: [0, 11, 0, 11]},
+                                    {text: '民族：回族', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {},
+                                    {text: '婚否：是', fontSize: 8, margin: [0, 11, 0, 11]},
+                                    imgs[0]],
+                                [{text: '身份证号：654125321453625478', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {},
+                                    {text: '出生日期：1881-12-31', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {},
+                                    {text: '入学前文化程度：高中', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {}],
+                                [{text: '邮箱：23412341234@qq.com', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {},
+                                    {text: '联系方式：123-4124-1243', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {},
+                                    {text: 'QQ：23412341234', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {}],
+                             //省略内容
+                            ]
+                        }
+                    },],
+                styles: {
+                    header: {
+                        fontSize: 18,
+                        bold: true,
+                        margin: [0, 0, 0, 10]
+                    },
+                    subheader: {
+                        fontSize: 16,
+                        bold: true,
+                        margin: [0, 10, 0, 5]
+                    },
+                    tableExample: {
+                        margin: [0, 5, 0, 15]
+                    },
+                    tableHeader: {
+                        bold: true,
+                        fontSize: 13,
+                        color: 'black'
+                    }
+                },
+                defaultStyle: {
+                    font: '微软雅黑'
+                }
+            }
+            pdfmake.createPdf(content).download;
+        } */
     },
+    /* ImageDataURL:function (urls) {//urls必須是字符串或字符串數組
+        
+        this.oncomplete = function(){};
+        this.getDataURL = function(url, index) {
+            var c = document.createElement("canvas");
+            var cxt = c.getContext("2d");
+            var img = new Image();
+            var dataurl;
+            var p;
+            p = this;
+            img.src = url;
+            img.onload = function() {
+                var i;
+                var maxwidth = 500;
+                var scale = 1.0;
+                if (img.width > maxwidth) {
+                    scale = maxwidth / img.width;
+                    c.width = maxwidth;
+                    c.height = Math.floor(img.height * scale);
+                } else {
+                    c.width= img.width;
+                    c.height= img.height;
+                }
+                cxt.drawImage(img, 0, 0, c.width, c.height);
+
+                p.imgdata[index] = c.toDataURL('image/jpeg');
+                for (let i = 0; i < p.totalnum; ++i) {
+                    if (p.imgdata[i] == null)break;
+                }
+                if (i == p.totalnum) {
+                    p.oncomplete();
+                }
+            };
+            img.onerror = function() {
+                p.imgdata[index] = p.emptyobj;
+                for (let i = 0; i < p.totalnum; ++i) {
+                    if (p.imgdata[i] == null)break;
+                }
+                if (i == p.totalnum) {
+                    p.oncomplete();
+                }
+            };
+        }
+        if (urls instanceof Array) {
+            this.totalnum = urls.length;
+            this.imgdata = new Array(this.totalnum);
+            for (let key in urls) {
+                this.getDataURL(urls[key], key);
+            }
+        } else {
+            this.imgdata = new Array(1);
+            this.totalnum = 1;
+            this.getDataURL(urls, 0);
+        }
+    }, */
       
     /* 绘制图表 */
     drawBar(){

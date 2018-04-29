@@ -17,6 +17,7 @@
     "axios": "^0.17.1",
     "echarts": "^4.0.4",
     "element-ui": "^2.3.6",
+    "fs": "0.0.1-security",
     "html2canvas": "^1.0.0-alpha.12",
     "jquery": "^2.2.4",
     "js-cookie": "^2.2.0",

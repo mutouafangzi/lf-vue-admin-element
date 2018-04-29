@@ -12681,7 +12681,13 @@ var defaultClientFonts = {
 		bold: 'Roboto-Medium.ttf',
 		italics: 'Roboto-Italic.ttf',
 		bolditalics: 'Roboto-MediumItalic.ttf'
-	}
+  },
+  微软雅黑: {
+    normal: 'msyh.ttf',
+    bold: 'msyh.ttf',
+    italics: 'msyh.ttf',
+    bolditalics: 'msyh.ttf',
+  }
 };
 
 function Document(docDefinition, tableLayouts, fonts, vfs) {
