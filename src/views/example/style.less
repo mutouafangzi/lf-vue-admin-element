@@ -1,0 +1,76 @@
+@import "../../../../assets/css/base.vars.less";
+.report-template {
+
+  .block {
+    background: @color-bg;
+  }
+  // 分页
+  #pagination-wrap {
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .el-pager {
+      li {
+        vertical-align: middle;
+      }
+
+    }
+  }
+  // 搜索区
+  .search-wrap{
+    // 搜索查询关键字
+    .search-right {
+      display: flex;
+      .el-button {
+        margin: 0 15px;
+      }
+    }
+    .el-select {
+      width: 200px;
+      margin-left: 15px;
+    }
+  }
+
+  // 内容区域
+  .context-wrap{
+    margin-top: 15px;
+    padding: 0 15px;
+  }
+  // 表格
+  .table-box {
+    margin-top: 15px;
+    //表格最后的操作列
+    td:last-child {
+      .cell {
+        padding: 5px !important;
+        display: flex;
+      }
+      .el-button--text {
+        padding: 0;
+      }
+    }
+  }
+  // 新增的弹窗区域
+  .add-dialog{
+    .el-select{
+      width: 100%;
+    }
+    .el-dialog__body{
+      overflow: hidden;
+    }
+  }
+  // 查看弹窗区域
+  .watch-dialog{
+    .el-select{
+      width: 100%;
+    }
+  }
+  // 编辑弹窗
+  .edit-dialog{
+    .el-select{
+      width: 100%;
+    }
+  }
+
+}

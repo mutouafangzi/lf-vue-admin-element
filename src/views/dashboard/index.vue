@@ -108,69 +108,172 @@ export default {
     /* 使用PDFmake点击下载事件 */
     userPdfmakeDownLoad(){
       console.log(pdfMake,pdfMake.vfs)
-      /* pdfMake.fonts = {
-        微软雅黑: {
-          normal: 'msyh.ttf',
-          bold: 'msyh.ttf',
-          italics: 'msyh.ttf',
-          bolditalics: 'msyh.ttf',
-        }
-      }; */
+      //中英文字体转换
+        pdfMake.fonts = {
+            Roboto: {
+                normal: 'Roboto-Regular.ttf',
+                bold: 'Roboto-Medium.ttf',
+                italics: 'Roboto-Italic.ttf',
+                bolditalics: 'Roboto-Italic.ttf'
+            },
+            微软雅黑: {
+                normal: 'msyh.ttf',
+                bold: 'msyh.ttf',
+                italics: 'msyh.ttf',
+                bolditalics: 'msyh.ttf',
+            }
+        };
       var imgs = new Array();
       var canvas = $("#barChart").find("canvas").first()[0];;
       console.log(canvas)
       imgs.push(canvas.toDataURL('image/jpeg', 1.0))
-      let content = {
-          content: [
-              {text: 'student dangan', fontSize: 22, style: 'subheader', color: '#36B7AB', alignment: 'center'},
-              {text: 'base inform', fontSize: 15, style: 'subheader', color: '#36B7AB'},
+      
+      var dd = {
+        // 页眉
+        header: function (currentPage, pageCount, pageSize) {
+          // you can apply any logic and return any valid pdfmake element
+          console.log('Lifang', currentPage, pageCount, pageSize)
+          return [
+            /* { text: 'simple text', alignment: (currentPage % 2) ? 'left' : 'right' }, */
+            { text: '页眉', alignment: 'center', margin: [10, 20]},
+            { canvas: [
               {
-                  style: 'tableExample',
-                  table: {
-                      widths: [100, 60, 55, '*', '*', '*', 100],
-                      body: [
-                          [{text: '学号：123456789123', fontSize: 8, margin: [0, 11, 0, 11]},
-                              {text: 'name：ZS', fontSize: 8, margin: [0, 11, 0, 11]},
-                              {text: 'sex：man', fontSize: 8, margin: [0, 11, 0, 11]},
-                              {text: 'minzu：huizu', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {},
-                              {text: 'hunfou：IS', fontSize: 8, margin: [0, 11, 0, 11]},
-                              imgs[0],
-                          ],
-                          [{text: 'shenfenzheng：654125321453625478', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {},
-                              {text: 'chushengriqi：1881-12-31', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {},
-                              {text: 'chengdu：gaozhong', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {}],
-                          [{text: 'email：23412341234@qq.com', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {},
-                              {text: 'lianxifangshi：123-4124-1243', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {},
-                              {text: 'QQ：23412341234', fontSize: 8, colSpan: 2, margin: [0, 11, 0, 11]}, {}],
-                      ]
-                  }
-              },
-          ],
-          /* styles: {
-              header: {
-                  fontSize: 18,
-                  //bold: true,
-                  margin: [0, 0, 0, 10]
-              },
-              subheader: {
-                  fontSize: 16,
-                  //bold: true,
-                  margin: [0, 10, 0, 5]
-              },
-              tableExample: {
-                  margin: [0, 5, 0, 15]
-              },
-              tableHeader: {
-                  //bold: true,
-                  fontSize: 13,
-                  color: 'black'
+                type: 'rect',
+                x: pageSize.width / 2 - 120,
+                y: 0,
+                w: 240,
+                h: 4,
+                r: 5,
+                lineWidth: 2,
+                lineColor: 'blue'
               }
+            ],
+            margin: [0, 0]
+            }
+
+          ]
+        },
+        // 页脚
+        footer: function (currentPage, pageCount) {
+          return [{
+            columns: [
+              { text: '', alignment: 'left'},
+              { text: '360企业安全', alignment: 'center'},
+              { text: `共${pageCount}页 第${currentPage}页`, alignment: 'right', margin: [0, 5]}
+            ]
+          }]
+        },
+        // 页面尺寸方向和边缘
+        // a string or { width: number, height: number }
+        pageSize: 'A4',
+
+        // by default we use portrait, you can change it to landscape if you wish
+        // pageOrientation: 'landscape',
+        // [left, top, right, bottom] or [horizontal, vertical] or just a number for equal margins
+        pageMargins: [ 40, 60, 40, 60 ],
+        /* background: function(currentPage, pageSize) {
+         return `page ${currentPage} with size 100 x 100`
+         }, */
+        // 页面内容
+        content: [
+          /* {
+            // if you specify both width and height - image will be stretched
+            image: imgs,
+            //style: 'canvasImg'
+            width: canvas.width/2,
+            height: canvas.height/2,
+            margin: [15, 15]
           }, */
-          /* defaultStyle: {
-   	         font: '微软雅黑'
-   	      } */
+          '中英文测试',
+          'Another paragraph, least two lines',
+          // 第一张大图片
+          {
+            image: 'sampleImage.jpg'
+          },
+          // 第二张小图片
+          'If you specify width, image will scale proportionally',
+          {
+            image: 'sampleImage.jpg',
+            width: 150
+          },
+          'If you specify both width and height - image will be stretched',
+          'Hello word',
+          // 样式one的文本
+          {
+            text: 'Hello word',
+            style: 'one'
+          },
+          // 换行文本
+          {
+            text: 'Hello \nword'
+          },
+          // 分隔符
+          {
+            columns: [
+              {
+                width: 90,
+                text: '你好世界-分割1'
+              },
+              {
+                width: '*',
+                text: '你好世界-分割2'
+              },
+              {
+                columns: [
+                  {text: 'Hello word'},
+                  {text: '你好世界-分割3', fontSize: 20}
+                ]
+              }
+            ]
+          },
+          // 表格
+          {
+            table: {
+              body: [
+                ['word1', 'word2', 'word3', 'word4'],
+                [{text: 'word', colSpan: 2}, '', '', {text: 'word', rowSpan: 3}],
+                [{text: 'word', colSpan: 2, rowSpan: 2}, '', 'word', ''],
+                ['', '', 'word', '']
+              ]
+            }
+          },
+          // 有序列表
+          {
+            ol: [
+              'Hello word ol1',
+              '你好世界 ol1',
+              // 无序列表
+              {
+                ul: [
+                  'Hello word',
+                  '你好世界'
+                ]
+              },
+              'Hello word'
+            ]
+          },
+          // 居中文本
+          {
+            // margin:[left,up,right,down]
+            text: 'Hello-word-你好世界',
+            margin: [100, 100, 100, 100]
+          }
+        ],
+        // 样式one
+        styles: {
+          one: {
+            fontSize: 24,
+            alignment: 'center'
+          },
+          canvasImg: {
+
+          }
+        },
+        defaultStyle: {
+          font: '微软雅黑'
+        }
       }
-      pdfMake.createPdf(content).download();
+      pdfMake.createPdf(dd).open();
       //图片格式转换
         /* var x = this.ImageDataURL(["./人生3.jpg","./人生3.jpg","./人生3.jpg"]);
         x.oncomplete = function () {

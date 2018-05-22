@@ -1,0 +1,28 @@
+@import "../../../../../assets/css/base.vars.less";
+// 下拉树形结构样式
+.input-select{
+  width: 200px;
+  margin-left: 15px;
+  display: inline-block;
+  position: relative;
+  .el-input__suffix{
+    line-height: 2;
+  }
+}
+.tree-box{
+  width: 200px;
+  transform-origin: center top 0px;
+  z-index: 2003;
+  overflow: hidden;
+  max-height: 274px;
+  position: absolute;
+  box-shadow: 5px 0px 5px -5px @color-line, -5px 0px 5px -5px @color-line,0px 5px 5px -5px @color-line,
+}
+.el-tree{
+  width: 220px;
+  max-height: 274px;
+  overflow-y: scroll;
+}
+.el-tree::-webkit-scrollbar{
+  display:none;
+}
