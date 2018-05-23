@@ -1,8 +1,3 @@
-/**
- * Created by lifang01
- * 2018/5/16.
- */
-
 import template from './index.vue'
 import './style.less'
 
