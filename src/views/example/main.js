@@ -1,8 +1,3 @@
-/**
- * Created by lifang01
- * 2018/5/15
- * 报表模板
- */
 import template from './index.vue'
 import './style.less'
 import oPanel from '../../../../components/panel/main'
@@ -109,7 +104,7 @@ export default {
   methods: {
     // 获取基本数据
     getInitData () {
-      this.$http('get', `/api/report_templetes/before_query`, {queryParams: null})
+      this.$http('get', `/******`, {queryParams: null})
         .then((res) => {
           if (res.statusCode === 200) {
             let result = res.data
@@ -146,7 +141,7 @@ export default {
         fuzzyValue: this.searchText
       }
       // 请求数据
-      this.$http('post', `/api/report_templetes/query`, {queryParams: data})
+      this.$http('post', `/******`, {queryParams: data})
         .then((res) => {
           if (res.statusCode === 200) {
             // console.log(data)
@@ -193,7 +188,7 @@ export default {
     addReportBtn () {
       // 打开新增弹窗
       this.isVisibleAddReportDialog = true
-      this.$http('get', `/api/report_templetes/before_insert`, {queryParams: null})
+      this.$http('get', `/******`, {queryParams: null})
         .then((res) => {
           if (res.statusCode === 200) {
             let result = res.data
@@ -221,7 +216,7 @@ export default {
         let deleteData = {
           ids: arrId
         }
-        this.$http('post', '/api/report_templetes/delete', {queryParams: deleteData})
+        this.$http('post', '/******', {queryParams: deleteData})
           .then((res) => {
             if (res.statusCode === 200) {
               this.$message({
@@ -245,7 +240,7 @@ export default {
     watchReportRow (index, row) {
       this.isVisibleWatchReportDialog = true
       console.log(row.id)
-      this.$http('get', `/api/report_templetes/view/${row.id}`, {queryParams: null})
+      this.$http('get', `/******`, {queryParams: null})
         .then((res) => {
           if (res.statusCode === 200) {
             let result = res.data
@@ -258,7 +253,7 @@ export default {
     editReportRow (index, row) {
       this.isVisibleEditReportDialog = true
       // 获取基础数据
-      this.$http('get', `/api/report_templetes/before_update/${row.id}`, {queryParams: null})
+      this.$http('get', `/******`, {queryParams: null})
         .then((res) => {
           if (res.statusCode === 200) {
             let result = res.data
@@ -289,7 +284,7 @@ export default {
           layout: { one: '###'}
         }
       }
-      this.$http('post', `/api/report_templetes/insert`, {queryParams: data})
+      this.$http('post', `/******`, {queryParams: data})
         .then((res) => {
           // console.log('传后台的数据',data)
           if (res.statusCode === 200) {
@@ -513,7 +508,7 @@ export default {
           layout: {one: '###'}
         }
       }
-      this.$http('post', `/api/circle_reports/update`, {queryParams: data})
+      this.$http('post', `/******`, {queryParams: data})
         .then((res) => {
           if (res.statusCode === 200) {
             // console.log(data)
