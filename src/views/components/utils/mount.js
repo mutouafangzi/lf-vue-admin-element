@@ -1,6 +1,3 @@
-/**
- * Created by lifang01 on 2018/5/22.
- */
 import Vue from 'vue'
 
 // 给定模板，和要挂载的元素id，挂载组件
