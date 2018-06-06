@@ -1,8 +1,3 @@
-/**
- * Created by lifang01
- * 2018/5/15.
- * 下拉树组件
- */
 import template from './index.vue'
 import './style.less'
 import clickoutside from '../utils/clickoutside'
