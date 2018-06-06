@@ -1,5 +1,43 @@
 <template>
   <div class="dashboard-container">
+    <el-form
+      prop="addReportForm"
+      label-width="100px"
+      :model="addReportForm"
+      ref="addReportForm"
+      status-icon>
+      <el-form-item label="报表数据范围" prop="dataRegion">
+          <div @click="addInputClick">
+            <el-input
+              v-model="addClickSelectText"
+              placeholder="请选择数据范围"
+              readonly>
+            </el-input>
+          </div>
+          <!--数据范围的下拉列表-->
+          <div class="select-out-wrap" v-if="addSelectWrapVisible">
+            <ul style="padding: 0px 15px;">
+              <li
+                style="height: 32px;line-height: 32px;cursor: pointer;"
+                v-for="(item,index) in addDataRegionList"
+                v-on:click="addClickList(item, index)"
+                :key="index"
+                :value="item.value">{{ item.label }}</li>
+              <div v-if="addReportForm.dataRegion == '0'" class="dataRegion-wrap">
+                <el-date-picker
+                  v-model="addReportForm.customDataRegion"
+                  @change="addChangeDataTime"
+                  :clearable = true
+                  type="datetimerange"
+                  value-format="timestamp"
+                  start-placeholder="开始日期"
+                  end-placeholder="结束日期">
+                </el-date-picker>
+              </div>
+            </ul>
+          </div>
+        </el-form-item>
+    </el-form>
     <div id="download-container">
       
       <div style="width:300px;height:300px;background: yellow;padding:50px;margin-right:20px;display:inline-block;" class="imgArea">
@@ -57,6 +95,50 @@ export default {
       emptyobj : {},
       oncomplete : function(){},
       getDataURL : function(){},
+
+      // 下拉列表
+      // 新增表单数据
+      addReportForm: {
+        // 报表名称
+        reportName: '', // 报表名称
+        execTime: '', // 首次执行时间代表1，按时间点代表2
+        timePoint: '', // 时间点
+        reportDownType: ['pdf', 'html'], // 报表格式
+        dataRegion: '', // 报表数据范围
+        customDataRegion: '',
+        reportTemplete: ''// 报表模板
+      },
+      // 下拉选择标志
+      addChangeFlag: false,
+      // 报表数据范围下来列表
+      addDataRegionList: [
+        {
+          'value': '1',
+          'label': '最近1天'
+        },
+        {
+          'value': '7',
+          'label': '最近7天'
+        },
+        {
+          'value': '14',
+          'label': '最近14天'
+        },
+        {
+          'value': '30',
+          'label': '最近30天'
+        },
+        {
+          'value': '0',
+          'label': '自定义'
+        }
+      ],
+      // 数据范围的下拉列表显示与否
+      addSelectWrapVisible: false,
+      // 点击的选项
+      addClickSelectText: '',
+      // 点击的value
+      addClickSelectValue: '',
     }
   },
   methods:{
@@ -540,6 +622,49 @@ export default {
         ]
       })
     },
+
+    // 下拉列表
+    // 新增弹窗的方法
+    // 新增弹窗的，数据范围的input框被点击时
+    addInputClick () {
+      console.log('点击')
+      this.addSelectWrapVisible = !this.addSelectWrapVisible
+    },
+    // 新增弹窗的，数据范围的下拉列表被点击时
+    addClickList (item, index) {
+      if (item.value !== '0') {
+        console.log(item.label)
+        this.addSelectWrapVisible = false
+        this.addClickSelectText = item.label
+        this.addReportForm.dataRegion = item.value
+      } else {
+        this.addReportForm.dataRegion = item.value
+      }
+    },
+    // 新增弹窗的，时间选择器
+    addChangeDataTime (time) {
+      if (!this.addReportForm.customDataRegion) {
+        // console.log('没有时间')
+        this.$message({
+          showClose: true,
+          message: '自定义下，请选择时间段哦~~',
+          type: 'warning'
+        })
+      } else {
+        console.log(time, this.addReportForm.customDataRegion)
+        let startTime = new Date(parseInt(this.addReportForm.customDataRegion[0])).toLocaleString().substr(0, 17)
+        let endTime = new Date(parseInt(this.addReportForm.customDataRegion[1])).toLocaleString().replace(/:\d{1,2}$/, ' ')
+        this.addClickSelectText = `从 ${startTime} 到 ${endTime}`
+        this.addSelectWrapVisible = false
+      }
+      /* this.addReportForm.customDataRegion = time.pickerVal
+      if (time.picker.length === 2) {
+        this.addClickSelectText = `从 ${time.picker[0]} 到 ${time.picker[1]}`
+      } else {
+        this.addClickSelectText = `${time.picker[0]}`
+      }
+      this.addSelectWrapVisible = false */
+    }
   },
   mounted () {
     this.drawBar();
@@ -569,6 +694,25 @@ export default {
   &-text {
     font-size: 30px;
     line-height: 46px;
+  }
+  .select-out-wrap{
+    position: fixed;
+    z-index: 2003;
+    min-width: 360px;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    padding-top: 6px;
+    background-color: #fbfdff;
+    overflow: auto;
+  }
+  .dataRegion-wrap{
+    margin: 5px 0 10px;
+  }
+  .data-wrap{
+    margin-top: 15px;
+    .el-date-editor.el-input{
+      width: 359px;
+    }
   }
 }
 </style>
