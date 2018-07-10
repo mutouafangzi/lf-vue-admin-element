@@ -60,21 +60,8 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     // 别名，在引入文件的时候可以使用
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
       // 可以在引入文件的时候使用@符号引入src文件夹中的文件
       '@': resolve('src'),
-      'src': path.resolve(__dirname, '../src'),
-      'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components'),
-      'views': path.resolve(__dirname, '../src/views'),
-      'styles': path.resolve(__dirname, '../src/styles'),
-      'api': path.resolve(__dirname, '../src/api'),
-      'utils': path.resolve(__dirname, '../src/utils'),
-      'store': path.resolve(__dirname, '../src/store'),
-      'router': path.resolve(__dirname, '../src/router'),
-      'mock': path.resolve(__dirname, '../src/mock'),
-      'vendor': path.resolve(__dirname, '../src/vendor'),
-      'static': path.resolve(__dirname, '../static'),
       // 2. 定义别名和插件位置
       'jquery': 'jquery',
     }

@@ -1,8 +1,12 @@
 <template>
-    <div class="app-wrapper" :class="{hideSidebar:!sidebar.opened}">
+    <div class="app-wrapper">
+      <!-- 左边侧栏菜单 -->
       <sidebar class="sidebar-container"></sidebar>
+      <!-- 右边主要内容 -->
       <div class="main-container">
+        <!-- 右边上部分 -->
         <navbar></navbar>
+        <!-- 右边下部分 -->
         <app-main></app-main>
       </div>
     </div>
@@ -31,42 +35,13 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  @import "../../styles/mixin";
+  @import "src/styles/mixin.scss";
   .app-wrapper{
-    @include clearfix;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    /* 此时sidebar.opened */
-    &.hideSidebar{
-      .sidebar-container{
-        width: 36px;
-        overflow: inherit;
-      }
-      .main-container{
-        margin-left: 36px;
-      }
-    }
-    //不做特殊处理的样式
+    // @include clearfix
     .sidebar-container {
-      transition: width 0.28s ease-out;
       width: 180px;
       height: 100%;
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 1001;
-      overflow-y: auto;
-      &::-webkit-scrollbar {display:none}
     }
-    .main-container {
-      min-height: 100%;
-      transition: margin-left 0.28s ease-out;
-      margin-left: 180px;
-    }
-
-
   }
 
 </style>

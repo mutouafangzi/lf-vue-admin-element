@@ -1,5 +1,8 @@
 <template>
     <div class="app-main">
+      <p>
+        这是AppMain
+      </p>
       <transition name="fade" mode="out-in">
         <!-- <router-view :key="key"></router-view> -->
         <router-view></router-view>
