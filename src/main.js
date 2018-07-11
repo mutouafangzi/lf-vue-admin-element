@@ -8,6 +8,9 @@ import store from './store'
 //引入一些css文件
 import "normalize.css"
 import "./assets/iconfont/iconfont.css"
+// 引入全局css
+import '@/styles/index.scss'
+
 //二维码插件
 //import ImgCode from './vendor/imgCode'  
 

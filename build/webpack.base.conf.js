@@ -60,6 +60,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     // 别名，在引入文件的时候可以使用
     alias: {
+      'vue': 'vue/dist/vue.js',
       // 可以在引入文件的时候使用@符号引入src文件夹中的文件
       '@': resolve('src'),
       // 2. 定义别名和插件位置

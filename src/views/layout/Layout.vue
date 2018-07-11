@@ -38,10 +38,43 @@
   @import "src/styles/mixin.scss";
   .app-wrapper{
     // @include clearfix
+    position: relative;
+    height: 100%;
+    width: 100%;
+    // 主体区域
+    .main-container {
+      min-height: 100%;
+      transition: margin-left .28s;
+      margin-left: 180px;
+    }
+    // 侧边栏
     .sidebar-container {
-      width: 180px;
+      /* .horizontal-collapse-transition {
+        transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
+      } */
+      transition: width .28s;
+      width: 180px !important;
       height: 100%;
+      position: fixed;
+      font-size: 0px;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1001;
+      overflow: hidden;
+      a {
+        display: inline-block;
+        width: 100%;
+      }
+      /* .svg-icon {
+        margin-right: 16px;
+      } */
+      .el-menu {
+        border: none;
+        width: 100% !important;
+      }
     }
   }
+  
 
 </style>
