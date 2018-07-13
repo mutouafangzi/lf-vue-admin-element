@@ -62,18 +62,10 @@
       left: 0;
       z-index: 1001;
       overflow: hidden;
-      a {
-        display: inline-block;
-        width: 100%;
-      }
-      /* .svg-icon {
-        margin-right: 16px;
-      } */
-      .el-menu {
-        border: none;
-        width: 100% !important;
-      }
     }
+  }
+  .el-scrollbar__wrap {
+    overflow-x: hidden !important;
   }
   
 

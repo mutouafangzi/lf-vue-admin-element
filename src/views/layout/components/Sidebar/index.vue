@@ -1,18 +1,20 @@
 <template>
-  <div>
+  <div class="scroll-wrap">
     <el-scrollbar 
-      wrap-class="scroll-wrap"
+      wrapClass="scroll-out-wrap"
+      wrap-style="overflow-x: hidden!important;"
+      style="height:100%"
       ref="scrollbar"> 
         <el-menu
-            default-active="2"
-            class="el-menu-vertical-demo"
-            @open="handleOpen"
-            @close="handleClose"
-            background-color="#545c64"
-            text-color="#fff"
-            active-text-color="#ffd04b">
-            <sidebar-item></sidebar-item>
-          </el-menu>
+          default-active="2"
+          class="el-menu-vertical-demo"
+          @open="handleOpen"
+          @close="handleClose"
+          background-color="#545c64"
+          text-color="#fff"
+          active-text-color="#ffd04b">
+          <sidebar-item></sidebar-item>
+        </el-menu>
       </el-scrollbar>
   </div>
 </template>
@@ -27,11 +29,11 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   @import "src/styles/mixin.scss";
-  .sidebar-wrap{
-    .scroll-wrap{
+  .scroll-wrap{
+    .el-menu {
+      border: none;
       height: 100%;
-      width: 180px;
-      overflow-x: hidden !important;
+      width: 100% !important;
     }
   }
   
