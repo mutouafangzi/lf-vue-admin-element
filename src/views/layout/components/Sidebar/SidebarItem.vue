@@ -1,5 +1,11 @@
 <template>
   <div class="menu-wrapper">
+    <router-link to="/dashboard">
+      <el-menu-item index="0">
+        <i class="el-icon-menu"></i>
+        <span>首页</span>
+      </el-menu-item>
+    </router-link>
     <router-link to="/documentation">
       <el-menu-item index="1">
         <i class="el-icon-menu"></i>
