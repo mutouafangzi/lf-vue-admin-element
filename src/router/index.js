@@ -25,11 +25,17 @@ Vue.use(Router)
 let routes= [
   {
     path: '/',
-    component: Layout
+    component: Layout,
+    
   },
   {
     path: '/login',
     component: () => import('@/views/login/index.vue')
+  },
+  // 首页
+  {
+    path: '/dashboard',
+    component: Dashboard
   },
   // 文档
   {
