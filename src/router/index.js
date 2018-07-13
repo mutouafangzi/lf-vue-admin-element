@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Layout from '../views/layout/Layout.vue'
 import Documentation from '../views/documentation/index.vue'
+import Dashboard from '../views/dashboard/index.vue'
 import Guide from '../views/guide/index.vue'
 import Permission from '../views/permission/index.vue'
 import Icon from '../views/icon/index.vue'
@@ -24,9 +25,15 @@ Vue.use(Router)
 
 let routes= [
   {
-    path: '/',
+    path: '',
     component: Layout,
-    
+    redirect: 'dashboard',
+    children:[
+      {
+        path: 'dashboard',
+        component: Dashboard,
+      }
+    ]
   },
   {
     path: '/login',
