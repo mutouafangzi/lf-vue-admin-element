@@ -1,121 +1,122 @@
 <template>
   <div class="menu-wrapper">
-    <el-menu-item index="2">
+    <router-link to="/documentation">
+      <el-menu-item index="1">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/documentation">文档</router-link>
-        </span>
+        <span>文档</span>
       </el-menu-item>
+    </router-link>
+    <router-link to="/guide">
       <el-menu-item index="2">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/guide">引导页</router-link>
-        </span>
+        <span slot="title">引导页</span>
       </el-menu-item>
-      <el-submenu index="1">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>
-            <router-link to="/permission">权限测试页</router-link>
-          </span>
-        </template>
-        <el-menu-item-group>
-          <template slot="title">分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>
+    </router-link>
+
+    <el-submenu index="3">
+      <template slot="title">
+        <i class="el-icon-location"></i>
+        <span>一级分组</span>
+      </template>
+      <el-menu-item-group>
+        <template slot="title">分组一</template>
+        <router-link to="/permission">
+          <el-menu-item index="1-1">权限测试页</el-menu-item>
+        </router-link>
+        <el-menu-item index="1-2">选项2</el-menu-item>
+      </el-menu-item-group>
+      <el-menu-item-group title="分组2">
+        <el-menu-item index="1-3">选项3</el-menu-item>
+      </el-menu-item-group>
+      <el-submenu index="4">
+        <template slot="title">选项4</template>
+        <el-menu-item index="1-4-1">选项1</el-menu-item>
       </el-submenu>
-      <el-menu-item index="2">
+    </el-submenu>
+    <router-link to="/icon">
+      <el-menu-item index="5">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/icon">图标</router-link>
-        </span>
+        <span slot="title">图标</span>
       </el-menu-item>
-      <el-menu-item index="2">
+    </router-link>
+    <router-link to="/components">
+      <el-menu-item index="6">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/components">组件</router-link>
-        </span>
+        <span slot="title">组件</span>
       </el-menu-item>
-      <el-menu-item index="2">
+    </router-link>
+    <router-link to="/charts">
+      <el-menu-item index="7">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/charts">图表</router-link>
-        </span>
+        <span slot="title">图表</span>
       </el-menu-item>
-      <el-menu-item index="2">
+    </router-link>
+    <router-link to="/tab">
+      <el-menu-item index="8">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/tab">Tab</router-link>
-        </span>
+        <span slot="title">Tab</span>
       </el-menu-item>
-      <el-menu-item index="2">
+    </router-link>
+    <router-link to="/table">
+      <el-menu-item index="9">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/table">表格</router-link>
-        </span>
+        <span slot="title">表格</span>
       </el-menu-item>
-      <el-menu-item index="2">
+    </router-link>
+    <router-link to="/example">
+      <el-menu-item index="10">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/example">综合实力</router-link>
-        </span>
+        <span slot="title">综合实力</span>
       </el-menu-item>
-      <el-menu-item index="2">
+    </router-link>
+    <router-link to="/nested">
+      <el-menu-item index="11">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/nested">路由嵌套</router-link>
-        </span>
+        <span slot="title">路由嵌套</span>
       </el-menu-item>
-      <el-menu-item index="2">
+    </router-link>
+    <router-link to="/error">
+      <el-menu-item index="12">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/error">错误页面</router-link>
-        </span>
+        <span slot="title">错误页面</span>
       </el-menu-item>
-      <el-menu-item index="2">
+    </router-link>
+    <router-link to="/error-log">
+      <el-menu-item index="13">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/error-log">错误日志</router-link>
-        </span>
+        <span slot="title">错误日志</span>
       </el-menu-item>
-      <el-menu-item index="2">
+    </router-link>
+    <router-link to="/excel">
+      <el-menu-item index="14">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/excel">Excel</router-link>
-        </span>
+        <span slot="title">Excel</span>
       </el-menu-item>
-      <el-menu-item index="2">
+    </router-link>
+    <router-link to="/zip">
+      <el-menu-item index="15">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/zip">ZIP</router-link>
-        </span>
+        <span slot="title">ZIP</span>
       </el-menu-item>
-      <el-menu-item index="2">
+    </router-link>
+    <router-link to="/theme">
+      <el-menu-item index="16">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/theme">换肤</router-link>
-        </span>
+        <span slot="title">换肤</span>
       </el-menu-item>
-      <el-menu-item index="2">
+    </router-link>
+    <router-link to="/clipboard">
+      <el-menu-item index="17">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/clipboard">剪贴板</router-link>
-        </span>
+        <span slot="title">剪贴板</span>
       </el-menu-item>
-      <el-menu-item index="2">
+    </router-link>
+    <router-link to="/i18n">
+      <el-menu-item index="18">
         <i class="el-icon-menu"></i>
-        <span slot="title">
-          <router-link to="/i18n">国际化</router-link>
-        </span>
+        <span slot="title">国际化</span>
       </el-menu-item>
+    </router-link>
   </div>
 </template>
 
@@ -125,3 +126,13 @@ export default {
   
 }
 </script>
+<style rel="stylesheet/scss" lang="scss" scoped>
+  @import "src/styles/mixin.scss";
+  .menu-wrapper{
+    a{
+      display: inline-block;
+      width: 100%;
+    }
+  }
+</style>
+
