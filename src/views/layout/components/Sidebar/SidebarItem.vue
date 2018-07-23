@@ -22,23 +22,18 @@
     <el-submenu index="3">
       <template slot="title">
         <i class="el-icon-location"></i>
-        <span>一级分组</span>
+        <span>权限测试页</span>
       </template>
       <el-menu-item-group>
-        <template slot="title">分组一</template>
-        <router-link to="/permission">
-          <el-menu-item index="1-1">权限测试页</el-menu-item>
+        <router-link to="/permission/page">
+          <el-menu-item index="1-1">页面权限</el-menu-item>
         </router-link>
-        <el-menu-item index="1-2">选项2</el-menu-item>
+        <router-link to="/permission/directive">
+          <el-menu-item index="1-2">指令权限</el-menu-item>
+        </router-link>
       </el-menu-item-group>
-      <el-menu-item-group title="分组2">
-        <el-menu-item index="1-3">选项3</el-menu-item>
-      </el-menu-item-group>
-      <el-submenu index="4">
-        <template slot="title">选项4</template>
-        <el-menu-item index="1-4-1">选项1</el-menu-item>
-      </el-submenu>
     </el-submenu>
+
     <router-link to="/icon">
       <el-menu-item index="5">
         <i class="el-icon-menu"></i>
@@ -128,17 +123,16 @@
 
 <script>
 export default {
-  name: 'SidebarItem',
-  
-}
+  name: "SidebarItem"
+};
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-  @import "src/styles/mixin.scss";
-  .menu-wrapper{
-    a{
-      display: inline-block;
-      width: 100%;
-    }
+@import "src/styles/mixin.scss";
+.menu-wrapper {
+  a {
+    display: inline-block;
+    width: 100%;
   }
+}
 </style>
 

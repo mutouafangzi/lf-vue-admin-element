@@ -23,21 +23,20 @@ import I18n from '../views/I18n/index.vue'
 
 Vue.use(Router)
 
-let routes= [
+let routes = [
   {
     path: '',
     component: Layout,
     redirect: 'dashboard',
-    children:[
-      {
-        path: 'dashboard',
-        component: Dashboard,
-      }
-    ]
+    children: [{
+      path: 'dashboard',
+      component: Dashboard,
+    }]
   },
   {
     path: '/login',
-    component: () => import('@/views/login/index.vue')
+    component: () =>
+      import ('@/views/login/index.vue')
   },
   // 首页
   {
@@ -57,7 +56,18 @@ let routes= [
   // 页面权限
   {
     path: '/permission',
-    component: Permission
+    component: Layout,
+    // redirect: '/permission/index',
+    children: [
+      {
+        path: 'page',
+        component: () => import('@/views/permission/page')
+      },
+      {
+        path: 'directive',
+        component: ()=>import('@/views/permission/directive')
+      }
+    ]
   },
   // 图标
   {
