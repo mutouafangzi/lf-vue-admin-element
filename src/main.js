@@ -7,6 +7,7 @@ import store from './store'
 
 //引入一些css文件
 import "normalize.css"
+// 引入iconfont文件
 import "./assets/iconfont/iconfont.css"
 // 引入全局css
 import '@/styles/index.scss'

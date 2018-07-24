@@ -1,0 +1,35 @@
+"data":{
+  "thead":[
+    {"label":"域名","type":"STRING","key":"host"},
+    {"label":"日志编码","type":"STRING","key":"id"},
+    {"label":"生成时间","type":"DATE","key":"create_time"},
+    {"label":"采集时间","type":"DATE","key":"collect_time"}
+  ],
+  "tbody":[
+    {
+      "host":{"label":"10.16.66.7","value":"10.16.66.7"},
+      "id":{
+        "label":"f9e5484763434055bad28aa744c22344","value":"9d26456546yc2881267962e274a5f7"
+      },
+      "create_time":{"label":1532105850229,"value":1532105850229},
+      "collect_time":{"label":1532105868058,"value":1532105868058}
+    },
+    {
+      "host":{"label":"10.16.66.7","value":"10.16.66.7"},
+      "id":{
+        "label":"9d2586a5832c4c2881267962e274a5f7","value":"9d2586a5832c4c2881267962e274a5f7"
+      },
+      "create_time":{"label":1532105850232,"value":1532105850232},
+      "collect_time":{"label":1532105868060,"value":1532105868060}
+    },
+    {
+      "host":{"label":"10.16.66.7","value":"10.16.66.7"},
+      "id":{
+        "label":"c716d173e8984396968d09679b5032d6","value":"c716d173e8984396968d09679b5032d6"
+      },
+      "create_time":{
+        "label":1532105850231,"value":1532105850231
+      }
+    }
+  ]
+}
