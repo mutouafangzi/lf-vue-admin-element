@@ -19,9 +19,7 @@
     name: 'layout',
     
     computed:{
-      sidebar(){
-        return this.$store.state.app.sidebar
-      }
+      
     },
     data() {
         return {}

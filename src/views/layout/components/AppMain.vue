@@ -13,6 +13,11 @@
 <script>
     export default {
         name: 'AppMain',
+        data(){
+            return {
+                
+            }
+        },
         computed: {
             // key() {
             //   return this.$route.name !== undefined ? this.$route.name + +new Date() : this.$route + +new Date()
@@ -21,6 +26,8 @@
     }
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
+<style rel="stylesheet/scss" lang="scss" scoped>
+    @import "src/styles/mixin.scss";
+    
 
 </style>
