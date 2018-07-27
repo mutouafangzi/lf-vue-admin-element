@@ -57,7 +57,7 @@ let routes = [
   {
     path: '/permission',
     component: Layout,
-    // redirect: '/permission/index',
+    redirect: '/permission/page',
     children: [
       {
         path: 'page',
@@ -142,5 +142,6 @@ let routes = [
 ]
 
 export default new Router({
-  routes
+  routes,
+  scrollBehavior: () => ({ y:0 })
 })
