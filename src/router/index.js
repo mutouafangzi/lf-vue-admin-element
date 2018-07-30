@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Layout from '../views/layout/Layout.vue'
+
 import Documentation from '../views/documentation/index.vue'
 import Dashboard from '../views/dashboard/index.vue'
 import Guide from '../views/guide/index.vue'
@@ -46,12 +47,22 @@ let routes = [
   // 文档
   {
     path: '/documentation',
-    component: Documentation
+    component: Layout,
+    redirect: '/documentation/index',
+    children: [{
+      path: 'index',
+      component: Documentation,
+    }]
   },
   // 引导页
   {
     path: '/guide',
-    component: Guide
+    component: Layout,
+    redirect: '/guide/index',
+    children: [{
+      path: 'index',
+      component: Guide,
+    }]
   },
   // 页面权限
   {
@@ -72,17 +83,100 @@ let routes = [
   // 图标
   {
     path: '/icon',
-    component: Icon
+    component: Layout,
+    redirect: '/icon/index',
+    children: [{
+      path: 'index',
+      component: Icon,
+    }]
   },
   // 组件
   {
     path: '/components',
-    component: Components
+    component: Layout,
+    redirect: 'noredirect',
+    children: [
+      {
+        // 富文本
+        path: 'tinymce',
+        component: Components,
+      },
+      {
+        // markdown
+        path: 'markdown',
+        component: Components,
+      },
+      {
+        // json编辑器
+        path: 'json-editor',
+        component: Components,
+      },
+      {
+        // 拆分网格/栅格布局
+        path: 'splitpane',
+        component: Components,
+      },
+      {
+        // 头像上传
+        path: 'avatar-upload',
+        component: Components,
+      },
+      {
+        // 文件拖拽上传
+        path: 'dropzone',
+        component: Components,
+      },
+      {
+        // 当窗口滚动至元素上边距离时，将元素固定在窗口顶部。
+        path: 'sticky',
+        component: Components,
+      },
+      {
+        // 计数组件
+        path: 'count-to',
+        component: Components,
+      },
+      {
+        // 小组件
+        path: 'mixin',
+        component: Components,
+      },
+      {
+        // 返回顶部
+        path: 'back-to-top',
+        component: Components,
+      },
+      {
+        // 拖拽Dialog
+        path: 'drag-dialog',
+        component: Components,
+      },
+      {
+        // 列表拖拽
+        path: 'dnd-list',
+        component: Components,
+      },
+      {
+        // 可拖拽看板
+        path: 'drag-kanban',
+        component: Components,
+      },
+      {
+        // 基于elementui的组件
+        path: 'elemetui-mixin',
+        component: Components,
+      }
+    ]
   },
   // 图表
   {
     path: '/charts',
-    component: Charts
+    component: Layout,
+    redirect: '/charts/index',
+    children: [{
+      path: 'index',
+      component: Charts,
+    }]
   },
   // tab
   {
