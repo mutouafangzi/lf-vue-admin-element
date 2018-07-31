@@ -43,43 +43,43 @@
         <i class="icon iconfont icon-component"></i>&nbsp;
         <span>组件</span>
       </template>
-      <router-link to="/components/page">
+      <router-link to="/components/tinymce">
         <el-menu-item index="6-1">富文本编辑器</el-menu-item>
       </router-link>
-      <router-link to="/components/directive">
+      <router-link to="/components/markdown">
         <el-menu-item index="6-2">Markdown</el-menu-item>
       </router-link>
-      <router-link to="/components/directive">
+      <router-link to="/components/json-editor">
         <el-menu-item index="6-3">JSON编辑器</el-menu-item>
       </router-link>
-      <router-link to="/components/directive">
+      <router-link to="/components/splitpane">
         <el-menu-item index="6-4">Splitpane</el-menu-item>
       </router-link>
-      <router-link to="/components/directive">
+      <router-link to="/components/avatar-upload">
         <el-menu-item index="6-5">头像上传</el-menu-item>
       </router-link>
-      <router-link to="/components/directive">
+      <router-link to="/components/dropzone">
         <el-menu-item index="6-6">Dropzone</el-menu-item>
       </router-link>
-      <router-link to="/components/directive">
+      <router-link to="/components/sticky">
         <el-menu-item index="6-7">sticky</el-menu-item>
       </router-link>
-      <router-link to="/components/directive">
+      <router-link to="/components/count-to">
         <el-menu-item index="6-8">CountTo</el-menu-item>
       </router-link>
-      <router-link to="/components/directive">
+      <router-link to="/components/mixin">
         <el-menu-item index="6-9">小组件</el-menu-item>
       </router-link>
-      <router-link to="/components/directive">
+      <router-link to="/components/back-to-top">
         <el-menu-item index="6-10">返回顶部</el-menu-item>
       </router-link>
-      <router-link to="/components/directive">
+      <router-link to="/components/drag-dialog">
         <el-menu-item index="6-11">拖拽Dialog</el-menu-item>
       </router-link>
-      <router-link to="/components/directive">
+      <router-link to="/components/dnd-list">
         <el-menu-item index="6-12">列表拖拽</el-menu-item>
       </router-link>
-      <router-link to="/components/directive">
+      <router-link to="/components/drag-kanban">
         <el-menu-item index="6-13">可拖拽看板</el-menu-item>
       </router-link>
     </el-submenu>
