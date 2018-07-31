@@ -3,14 +3,7 @@ import Router from 'vue-router'
 
 import Layout from '../views/layout/Layout.vue'
 
-import Documentation from '../views/documentation/index.vue'
-import Dashboard from '../views/dashboard/index.vue'
-import Guide from '../views/guide/index.vue'
-// import Permission from '../views/permission/index.vue'
-import Icon from '../views/icon/index.vue'
-import Components from '../views/components/index.vue'
-import Charts from '../views/charts/index.vue'
-import Tab from '../views/tab/index.vue'
+/* import Dashboard from '../views/dashboard/index.vue'
 import Table from '../views/table/index.vue'
 import Example from '../views/example/index.vue'
 import Nested from '../views/nested/index.vue'
@@ -20,7 +13,7 @@ import Excel from '../views/excel/index.vue'
 import Zip from '../views/zip/index.vue'
 import Theme from '../views/theme/index.vue'
 import Clipboard from '../views/clipboard/index.vue'
-import I18n from '../views/I18n/index.vue'
+import I18n from '../views/I18n/index.vue' */
 
 Vue.use(Router)
 
@@ -31,7 +24,8 @@ let routes = [
     redirect: 'dashboard',
     children: [{
       path: 'dashboard',
-      component: Dashboard,
+      component: () =>
+      import ('@/views/dashboard/index.vue')
     }]
   },
   {
@@ -42,7 +36,7 @@ let routes = [
   // 首页
   {
     path: '/dashboard',
-    component: Dashboard
+    component: () => import('@/views/dashboard/index'),
   },
   // 文档
   {
@@ -51,7 +45,7 @@ let routes = [
     redirect: '/documentation/index',
     children: [{
       path: 'index',
-      component: Documentation,
+      component: () => import('@/views/documentation/index'),
     }]
   },
   // 引导页
@@ -61,7 +55,7 @@ let routes = [
     redirect: '/guide/index',
     children: [{
       path: 'index',
-      component: Guide,
+      component: () => import('@/views/guide/index'),
     }]
   },
   // 页面权限
@@ -87,7 +81,7 @@ let routes = [
     redirect: '/icon/index',
     children: [{
       path: 'index',
-      component: Icon,
+      component: ()=>import('@/views/icon/index')
     }]
   },
   // 组件
@@ -99,72 +93,72 @@ let routes = [
       {
         // 富文本
         path: 'tinymce',
-        component: Components,
+        component: ()=>import('@/views/components-demo/tinymce.vue')
       },
       {
         // markdown
         path: 'markdown',
-        component: Components,
+        component: ()=>import('@/views/components-demo/markdown')
       },
       {
         // json编辑器
         path: 'json-editor',
-        component: Components,
+        component: ()=>import('@/views/components-demo/jsonEditor')
       },
       {
         // 拆分网格/栅格布局
         path: 'splitpane',
-        component: Components,
+        component: ()=>import('@/views/components-demo/splitpane')
       },
       {
         // 头像上传
         path: 'avatar-upload',
-        component: Components,
+        component: ()=>import('@/views/components-demo/avatarUpload')
       },
       {
         // 文件拖拽上传
         path: 'dropzone',
-        component: Components,
+        component: ()=>import('@/views/components-demo/dropzone')
       },
       {
         // 当窗口滚动至元素上边距离时，将元素固定在窗口顶部。
         path: 'sticky',
-        component: Components,
+        component: ()=>import('@/views/components-demo/sticky')
       },
       {
         // 计数组件
         path: 'count-to',
-        component: Components,
+        component: ()=>import('@/views/components-demo/countTo')
       },
       {
         // 小组件
         path: 'mixin',
-        component: Components,
+        component: ()=>import('@/views/components-demo/mixin')
       },
       {
         // 返回顶部
         path: 'back-to-top',
-        component: Components,
+        component: ()=>import('@/views/components-demo/backToTop')
       },
       {
         // 拖拽Dialog
         path: 'drag-dialog',
-        component: Components,
+        component: ()=>import('@/views/components-demo/dragDialog')
       },
       {
         // 列表拖拽
         path: 'dnd-list',
-        component: Components,
+        component: ()=>import('@/views/components-demo/dndList')
       },
       {
         // 可拖拽看板
         path: 'drag-kanban',
-        component: Components,
+        component: ()=>import('@/views/components-demo/dragKanban')
       },
       {
         // 基于elementui的组件
         path: 'elemetui-mixin',
-        component: Components,
+        component: ()=>import('@/views/components-demo/eleMixin')
       }
     ]
   },
@@ -172,67 +166,196 @@ let routes = [
   {
     path: '/charts',
     component: Layout,
-    redirect: '/charts/index',
-    children: [{
-      path: 'index',
-      component: Charts,
-    }]
+    redirect: 'noredirect',
+    children: [
+      {
+        // 键盘图表
+        path: 'keyboard',
+        component: ()=>import('@/views/charts/keyboard')
+      },
+      {
+        // 折线图
+        path: 'line',
+        component: ()=>import('@/views/charts/line')
+      },
+      {
+        // 混合图表
+        path: 'mixchart',
+        component: ()=>import('@/views/charts/mixchart')
+      },
+      {
+        // 地图
+        path: 'mapcharts',
+        component: ()=>import('@/views/charts/mapcharts')
+      },
+    ]
   },
   // tab
   {
     path: '/tab',
-    component: Tab
+    component: Layout,
+    redirect: '/tab/index',
+    children: [{
+      path: 'index',
+      component: ()=>import('@/views/tab/index')
+    }]
   },
   // 表格
   {
     path: '/table',
-    component: Table
+    component: Layout,
+    redirect: 'noredirect',
+    children: [
+      {
+        path: 'dynamicTable',
+        component: ()=>import('@/views/table/dynamicTable')
+      },
+      {
+        path: 'dragTable',
+        component: ()=>import('@/views/table/dragTable')
+      },
+      {
+        path: 'innerEditTable',
+        component: ()=>import('@/views/table/innerEditTable')
+      },
+      {
+        path: 'treeTable',
+        component: ()=>import('@/views/table/treeTable')
+      },
+      {
+        path: 'customTreeTable',
+        component: ()=>import('@/views/table/customTreeTable')
+      },
+      {
+        path: 'complexTable',
+        component: ()=>import('@/views/table/complexTable')
+      }
+    ]
   },
   // 实例
   {
     path: '/example',
-    component: Example
+    component: Layout,
+    redirect: 'noredirect',
+    children: [
+      {
+        path: 'creatArticle',
+        component: ()=>import('@/views/example/creatArticle')
+      },
+      {
+        path: 'articleList',
+        component: ()=>import('@/views/example/articleList')
+      }
+    ]
   },
   // 路由嵌套
   {
     path: '/nested',
-    component: Nested
+    component: Layout,
+    redirect: 'noredirect',
+    children: [
+      {
+        path: 'menu1',
+        component: ()=>import('@/views/nested/menu1')
+      },
+      {
+        path: 'menu2',
+        component: ()=>import('@/views/nested/menu2')
+      }
+    ]
   },
   // 错误页面
   {
     path: '/error',
-    component: Errors
+    component: Layout,
+    redirect: 'noredirect',
+    children: [
+      {
+        path: '401',
+        component: ()=>import('@/views/errors/401')
+      },
+      {
+        path: '404',
+        component: ()=>import('@/views/errors/404')
+      }
+    ]
   },
   // 错误日志
   {
     path: '/error-log',
-    component: ErrorLog
+    component: Layout,
+    redirect: '/error-log/index',
+    children: [{
+      path: 'index',
+      component: ()=>import('@/views/errlog/index')
+    }]
   },
   // Excel
   {
     path: '/excel',
-    component: Excel
+    component: Layout,
+    redirect: 'noredirect',
+    children: [
+      {
+        path: 'exportExcel',
+        component: ()=>import('@/views/excel/exportExcel')
+      },
+      {
+        path: 'exportSelected',
+        component: ()=>import('@/views/excel/exportSelected')
+      },
+      {
+        path: 'uploadExcel',
+        component: ()=>import('@/views/excel/uploadExcel')
+      },
+    ]
   },
   // Zip
   {
     path: '/zip',
-    component: Zip
+    component: Layout,
+    redirect: 'noredirect',
+    children: [
+      {
+        path: 'exportZip',
+        component: ()=>import('@/views/zip/exportZip')
+      },
+      {
+        path: 'exportElse',
+        component: ()=>import('@/views/zip/exportElse')
+      },
+    ]
   },
   // 换肤
   {
     path: '/theme',
-    component: Theme
+    component: Layout,
+    redirect: '/theme/index',
+    children: [{
+      path: 'index',
+      component: ()=>import('@/views/theme/index')
+    }]
   },
   // 剪贴板
   {
     path: '/clipboard',
-    component: Clipboard
+    component: Layout,
+    redirect: '/clipboard/index',
+    children: [{
+      path: 'index',
+      component: ()=>import('@/views/clipboard/index')
+    }]
   },
   // 国际化
   {
     path: '/i18n',
-    component: I18n
-  },
+    component: Layout,
+    redirect: '/i18n/index',
+    children: [{
+      path: 'index',
+      component: ()=>import('@/views/i18n/index')
+    }]
+  }
 ]
 
 export default new Router({
