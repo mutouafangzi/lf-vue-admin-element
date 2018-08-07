@@ -1,8 +1,5 @@
 <template>
     <div class="app-main">
-      <p>
-        这是AppMain
-      </p>
       <transition name="fade" mode="out-in">
         <!-- <router-view :key="key"></router-view> -->
         <router-view></router-view>
@@ -26,7 +23,7 @@
     }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="scss">
     @import "src/styles/mixin.scss";
     
 

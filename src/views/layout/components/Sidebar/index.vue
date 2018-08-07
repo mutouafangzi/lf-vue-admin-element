@@ -8,8 +8,6 @@
         <el-menu
           default-active="2"
           class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b">
@@ -27,14 +25,15 @@ export default {
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="scss">
   @import "src/styles/mixin.scss";
   .scroll-wrap{
-    .el-menu {
+    width: 90px;
+    /* .el-menu {
       border: none;
       height: 100%;
-      width: 100% !important;
-    }
+      width: 90px !important;
+    } */
   }
   
 </style>

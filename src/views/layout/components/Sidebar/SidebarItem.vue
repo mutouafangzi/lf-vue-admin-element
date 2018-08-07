@@ -1,5 +1,6 @@
 <template>
   <div class="menu-wrapper">
+
     <router-link to="/dashboard">
       <el-menu-item index="0">
         <i class="icon iconfont icon-Home-f"></i>&nbsp;
@@ -38,6 +39,7 @@
         <span slot="title">图标</span>
       </el-menu-item>
     </router-link>
+
     <el-submenu index="6">
       <template slot="title">
         <i class="icon iconfont icon-component"></i>&nbsp;
@@ -99,6 +101,18 @@
       </router-link>
       <router-link to="/charts/mapcharts">
         <el-menu-item index="7-4">地图</el-menu-item>
+      </router-link>
+    </el-submenu>
+    <el-submenu index="25">
+      <template slot="title">
+        <i class="icon iconfont icon-iconhomeh5"></i>&nbsp;
+        <span>图像</span>
+      </template>
+      <router-link to="/graphic/3D">
+        <el-menu-item index="25-1">3D</el-menu-item>
+      </router-link>
+      <router-link to="/graphic/panorama">
+        <el-menu-item index="25-2">全景看房</el-menu-item>
       </router-link>
     </el-submenu>
     <router-link to="/tab">
@@ -226,7 +240,7 @@ export default {
   name: "SidebarItem"
 };
 </script>
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="scss">
 @import "src/styles/mixin.scss";
 .menu-wrapper {
   a {

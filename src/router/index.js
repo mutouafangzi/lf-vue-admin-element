@@ -190,6 +190,24 @@ let routes = [
       },
     ]
   },
+  // 图像
+  {
+    path: '/graphic',
+    component: Layout,
+    redirect: 'noredirect',
+    children: [
+      {
+        // 3D
+        path: '3D',
+        component: ()=>import('@/views/graphic/3D')
+      },
+      {
+        // 全景看房
+        path: 'panorama',
+        component: ()=>import('@/views/graphic/panorama')
+      }
+    ]
+  },
   // tab
   {
     path: '/tab',

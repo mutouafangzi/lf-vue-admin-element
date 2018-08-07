@@ -32,7 +32,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="scss">
   @import "src/styles/mixin.scss";
   .app-wrapper{
     // @include clearfix
@@ -61,9 +61,9 @@
       z-index: 1001;
       overflow: hidden;
     }
-  }
-  .el-scrollbar__wrap {
-    overflow-x: hidden !important;
+    .app-main{
+      margin: 15px 10px;
+    }
   }
   
 
