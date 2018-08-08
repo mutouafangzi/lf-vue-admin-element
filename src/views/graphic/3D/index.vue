@@ -8,7 +8,7 @@ import func from './vue-temp/vue-editor-bridge';
         :key="$index"
         v-for="(item,$index) in polygonData"
         :style="setStyle($index)">
-        <img :src="item.imgPath" height="500" width="1000">
+        <img :src="item.imgPath" height="350" width="600">
       </div>
     </div>
   </div>
@@ -65,15 +65,15 @@ export default {
       // 旋转每个角度
       let deg = 360/that.polygonData.length
       // 变幻时原点在z轴上移动距离
-      let originZ = 520/Math.tan(deg/2/180*Math.PI)
+      let originZ = 320/Math.tan(deg/2/180*Math.PI)
       // 变换的原点
       let originCoord = 'center center '+ -originZ +'px'
       // 每次变换旋转角度
       let rotateDeg = 'rotateY('+ deg*index+'deg)'
       // 样式的拼凑
       let Obj = {
-        width: 1000+'px',
-				height: 500+'px',
+        width: 600+'px',
+				height: 350+'px',
         transformOrigin: originCoord, 
         transform: rotateDeg
       }
@@ -85,7 +85,7 @@ export default {
       // 旋转每个角度
       let deg = 360/that.polygonData.length
       // 变幻时原点在z轴上移动距离
-      let originZ = 520/Math.tan(deg/2/180*Math.PI)
+      let originZ = 320/Math.tan(deg/2/180*Math.PI)
       // 变换的原点
       let originCoord = 'center center '+ -originZ +'px'
       return {transformOrigin: originCoord}
@@ -110,22 +110,22 @@ export default {
 
   #wrap{
     perspective: 800px;
-    width: 1000px;
-    height: 500px;
+    width: 600px;
+    height: 350px;
     padding: 100px;
-    margin: 100px 20%;
+    margin: 100px 25%;
     .box{
       position: relative;
       transform-style: preserve-3d;
-      width: 1000px;
-      height: 500px;
+      width: 600px;
+      height: 350px;
       transition: 60s transform;
       div{
 				position: absolute;
 				/* line-height: 1000px;
 				text-align: center; */
 				background: pink;
-				border: 1px solid pink;
+				border: 1px solid red;
         overflow: hidden;
 			}
     }

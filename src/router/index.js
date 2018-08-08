@@ -202,6 +202,11 @@ let routes = [
         component: ()=>import('@/views/graphic/3D/index')
       },
       {
+        // 骰子
+        path: 'dice',
+        component: ()=>import('@/views/graphic/dice/index')
+      },
+      {
         // 全景看房
         path: 'panorama',
         component: ()=>import('@/views/graphic/panorama')

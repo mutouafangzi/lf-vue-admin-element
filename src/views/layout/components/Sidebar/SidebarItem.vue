@@ -111,8 +111,11 @@
       <router-link to="/graphic/3D">
         <el-menu-item index="25-1">3D</el-menu-item>
       </router-link>
+      <router-link to="/graphic/dice">
+        <el-menu-item index="25-2">骰子</el-menu-item>
+      </router-link>
       <router-link to="/graphic/panorama">
-        <el-menu-item index="25-2">全景看房</el-menu-item>
+        <el-menu-item index="25-3">全景看房</el-menu-item>
       </router-link>
     </el-submenu>
     <router-link to="/tab">
