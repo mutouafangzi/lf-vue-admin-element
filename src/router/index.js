@@ -199,7 +199,7 @@ let routes = [
       {
         // 3D
         path: '3D',
-        component: ()=>import('@/views/graphic/3D')
+        component: ()=>import('@/views/graphic/3D/index')
       },
       {
         // 全景看房

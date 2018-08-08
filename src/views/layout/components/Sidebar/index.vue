@@ -28,7 +28,6 @@ export default {
 <style rel="stylesheet/scss" lang="scss">
   @import "src/styles/mixin.scss";
   .scroll-wrap{
-    width: 90px;
     /* .el-menu {
       border: none;
       height: 100%;
