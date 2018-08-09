@@ -3,7 +3,7 @@
   <div>
     <tiny-mce
     :config           = "Config"
-     v-model          = "Value"
+    v-model          = "Value"
     :url              = "Url"
     :max-size         = "MaxSize"
     :accept           = "Accept"
@@ -26,9 +26,30 @@ export default {
       return {
         Config:{
           theme: 'modern',
-          height: 300
+          // 编辑区高度
+          height: 300,
+          // 工具栏，可以在调用时配置
+          toolbar: 
+          // 一种配置
+          'styleselect | fontselect | formatselect | fontsizeselect | forecolor backcolor | bold italic underline strikethrough | image  media | table | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | preview removeformat  hr | paste code  link | undo redo | blockquote  subscript superscript codesample | charmap	anchor pagebreak insertdatetime emoticons fullscreen',
+          // 菜单栏
+          menubar: 'file edit insert view format table',
         },
-        Value:'请输入内容'
+        Value:''
+      }
+    },
+    methods: {
+      onEditorReady(){
+        console.log('这是onEditorReady')
+      },
+      onEditorDestroy(){
+        console.log('这是onEditorDestroy')
+      },
+      onEditorUploadComplete(){
+        console.log('这是onEditorUploadComplete')
+      },
+      onEditorUploadFail(){
+        console.log('这是onEditorUploadFail')
       }
     },
     components:{
