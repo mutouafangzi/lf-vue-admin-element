@@ -1,9 +1,7 @@
 <!-- 富文本编辑器组件 -->
 <template>
   <div>
-    <p>fuwenben</p>
     <textarea :id="Id"></textarea>
-    <h1>这是分割线</h1>
     <!-- <editor id='tinymce' v-model='tinymceHtml' :init='init'></editor> -->
   </div>
 </template>
@@ -185,8 +183,8 @@
         }
       },
 
-      // 一下都是上传图片的相关配置参数
-      url: {
+      // 以下都是上传图片的相关配置参数
+      /* url: {
         default: '',
         type: String
       },
@@ -201,7 +199,7 @@
       withCredentials: {
         default: false,
         type: Boolean
-      }
+      } */
     },
     
     methods: {
@@ -211,41 +209,42 @@
           // 默认配置
           ...this.DefaultConfig,
 
-          // 图片上传
+          /* // 图片上传
           images_upload_handler: function (blobInfo, success, failure) {
-            if (blobInfo.blob().size > self.maxSize) {
+            if (blobInfo.blob().size > that.maxSize) {
               failure('文件体积过大')
             }
             
-            if (self.accept.indexOf(blobInfo.blob().type) > 0) {
+            if (that.accept.indexOf(blobInfo.blob().type) >= 0) {
               uploadPic()
             } else {
+              // console.log('这是图片格式', blobInfo.blob().type,that.accept,that.accept.indexOf(blobInfo.blob().type))
               failure('图片格式错误')
             }
             function uploadPic () {
               const xhr = new XMLHttpRequest()
               const formData = new FormData()
-              xhr.withCredentials = self.withCredentials
-              xhr.open('POST', self.url)
+              xhr.withCredentials = that.withCredentials
+              xhr.open('POST', that.url)
               xhr.onload = function () {
 
                 if (xhr.status !== 200) {
                   // 抛出 'on-upload-fail' 钩子
-                  self.$emit('on-upload-fail')
+                  that.$emit('on-upload-fail')
                   failure('上传失败: ' + xhr.status)
                   return
                 }
 
                 const json = JSON.parse(xhr.responseText)
                 // 抛出 'on-upload-complete' 钩子
-                self.$emit('on-upload-complete' , [
+                that.$emit('on-upload-complete' , [
                   json, success, failure
                 ])
               }
               formData.append('file', blobInfo.blob())
               xhr.send(formData)
             }
-          },
+          }, */
 
           // prop内传入的config
           ...this.config,
@@ -256,15 +255,15 @@
             // 抛出 'on-ready' 事件钩子
             editor.on(
               'init', () => {
-                self.loading = false
-                self.$emit('on-ready')
-                editor.setContent(self.value)
+                that.loading = false
+                that.$emit('on-ready')
+                editor.setContent(that.value)
               }
             )
             // 抛出 'input' 事件钩子，同步value数据
             editor.on(
               'input change undo redo', () => {
-                self.$emit('input', editor.getContent())
+                that.$emit('input', editor.getContent())
               }
             )
           }
@@ -284,7 +283,7 @@
     beforeDestroy () {
       // 销毁tinymce
       this.$emit('on-destroy')
-      window.tinymce.remove(`$#{this.Id}`)
+      window.tinymce.remove(`#${this.Id}`)
     },
   }
 

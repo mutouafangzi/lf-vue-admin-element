@@ -1,13 +1,15 @@
 <!--  -->
 <template>
-  <div>
+  <div id="tinymce-wrap">
+    <!-- 
+      :url              = "Url"
+      :max-size         = "MaxSize"
+      :accept           = "Accept"
+      :with-credentials = false
+     -->
     <tiny-mce
     :config           = "Config"
     v-model          = "Value"
-    :url              = "Url"
-    :max-size         = "MaxSize"
-    :accept           = "Accept"
-    :with-credentials = false
     @on-ready         = "onEditorReady"
     @on-destroy       = "onEditorDestroy"
     @on-upload-success= "onEditorUploadComplete"
@@ -35,7 +37,15 @@ export default {
           // 菜单栏
           menubar: 'file edit insert view format table',
         },
-        Value:''
+        Value:'',
+        // 传给后台的url地址
+        /* Url: '',
+        Accept: 'image/jpeg, image/png, image/jpg',
+        MaxSize: 2097152,
+        withCredentials: {
+          default: false,
+          type: Boolean
+        } */
       }
     },
     methods: {
@@ -52,6 +62,11 @@ export default {
         console.log('这是onEditorUploadFail')
       }
     },
+    watch: {
+      Value: function(val){
+        console.log('变化的值',val)
+      }
+    },
     components:{
       TinyMce
     }
@@ -61,5 +76,9 @@ export default {
 <style rel="stylesheet/scss" lang="scss">
 
   @import "src/styles/mixin.scss";
+  #tinymce-wrap {
+    width: 1500px;
+    margin: 15px;
+  }
 
 </style>
