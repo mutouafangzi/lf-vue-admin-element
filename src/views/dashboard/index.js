@@ -4,7 +4,7 @@
 //let GridItem = VueGridLayout.GridItem
 import { mapGetters } from 'vuex'
 //import oPanel from '@/components/panel/panel.vue'
-import html2Canvas from "html2canvas"  
+import html2Canvas from "html2canvas" 
 import JsPDF from "jspdf" 
 
 /* require('pdfmake/build/pdfmake.js');
@@ -14,7 +14,6 @@ require("@/vendor/toPDF/vfs_fonts.js")
 /* import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts"; */
 //pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
 
 
 export default {

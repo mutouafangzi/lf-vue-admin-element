@@ -2,11 +2,15 @@
 <template>
   <div>
     <textarea :id="Id"></textarea>
+    <img-uploader></img-uploader>
     <!-- <editor id='tinymce' v-model='tinymceHtml' :init='init'></editor> -->
   </div>
 </template>
 
 <script>
+
+import ImgUploader from '../eleuiMixin/imgUpload/index'
+
 import "../../../static/tinymce/tinymce.min.js";
 // import "../../../static/tinymce/langs/zh_CN";
 
@@ -284,6 +288,7 @@ export default {
   watch: {},
   components: {
     /* Editor */
+    ImgUploader
   },
   beforeDestroy() {
     // 销毁tinymce

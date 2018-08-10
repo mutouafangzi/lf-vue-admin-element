@@ -18,6 +18,8 @@ export default {
 }
 
 </script>
-<style scoped>
+<style rel="stylesheet/scss" lang="scss">
+
+  @import "src/styles/mixin.scss";
 
 </style>

@@ -6,7 +6,7 @@ const config = require('../config')
 // 提取特定文件的插件，比如把css文件提取到一个文件中去
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 // 加载package.json文件
-const pkg = require('../package.json')
+const packageConfig = require('../package.json')
 
 // 生成编译输出的二级目录
 exports.assetsPath = function (_path) {
@@ -127,6 +127,16 @@ exports.createNotifierCallback = function () {
     if (severity !== 'error') {
       return
     }
+
+    const error = errors[0]
+    const filename = error.file && error.file.split('!').pop()
+
+    notifier.notify({
+      title: packageConfig.name,
+      message: severity + ': ' + error.name,
+      subtitle: filename || '',
+      icon: path.join(__dirname, 'logo.png')
+    })
     /* const error = errors[0]
 
     const filename = error.file && error.file.split('!').pop()
