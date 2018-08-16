@@ -2,7 +2,7 @@
 <template>
   <div>
     <textarea :id="Id"></textarea>
-    <img-uploader></img-uploader>
+    <img-uploader  color="#1890ff" class="editor-upload-btn" @successCBK="imageSuccessCBK"></img-uploader>
     <!-- <editor id='tinymce' v-model='tinymceHtml' :init='init'></editor> -->
   </div>
 </template>
@@ -279,6 +279,13 @@ export default {
           });
         }
       });
+    },
+    imageSuccessCBK(arr){
+      console.log('应该是上传图片的url吧',arr)
+      const _this = this
+      arr.forEach(v => {
+        window.tinymce.get(_this.tinymceId).insertContent(`<img class="wscnph" src="${v.url}" >`)
+      })
     }
   },
 
