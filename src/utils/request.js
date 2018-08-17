@@ -12,11 +12,17 @@ const service = axios.create({
 // 添加请求拦截器
 service.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
-  //在这个项目中是要加上token
+  // 在这个项目中是要加上token
   if(store.getters.token){
     //让每一个请求携带自定义token
     config.headers['X-Token'] = getToken()
   }
+  /* 
+  const TokenKey = 'Admin-lifang-Token'
+  function getToken(){
+    return Cookies.get(TokenKey)
+  }
+  */
   return config;
 }, function (error) {
   // 对请求错误做些什么
