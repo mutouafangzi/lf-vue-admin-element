@@ -14,7 +14,6 @@ import '@/styles/index.scss'
 
 //二维码插件
 //import ImgCode from './vendor/imgCode'  
-
 //引入其他的组件
 import ElementUI from 'element-ui'
 //英语语言
@@ -22,6 +21,8 @@ import locale from 'element-ui/lib/locale/lang/en'
 // 引入echarts
 import echarts from 'echarts'
 import "element-ui/lib/theme-chalk/index.css"
+// 引入mock
+import "./mock/mockServer"
 
 
 Vue.use(ElementUI, { locale });
