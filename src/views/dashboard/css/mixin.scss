@@ -1,0 +1,62 @@
+@import './variable.scss';
+
+// 字体颜色
+@mixin font_color($color) {
+  color:$color;
+  [class='theme-white'] & {
+    color: $font-color-white;
+  }
+  [class='theme-black'] & {
+    color: $font-color-black;
+  }
+}
+// 背景颜色
+@mixin bg_color($color) {
+  background-color:$color;
+  [class='theme-white'] & {
+    color: $background-color-white;
+  }
+  [class='theme-black'] & {
+    color: $background-color-black;
+  }
+}
+// box阴影颜色
+@mixin box_shadow_color($color) {
+  box-shadow: 0 2px 12px 0 $color;
+  [class='theme-white'] & {
+    color: $box-shadow-white;
+  }
+  [class='theme-black'] & {
+    color: $box-shadow-black;
+  }
+}
+// box的边框颜色
+@mixin border_color($color) {
+  border-color: $color;
+  [class='theme-white'] & {
+    color: $box-shadow-white;
+  }
+  [class='theme-black'] & {
+    color: $box-shadow-black;
+  }
+}
+// 图表颜色
+@mixin charts_color($color) {
+  background-color: $color;
+  [class='theme-white'] & {
+    color: $chart-color-white;
+  }
+  [class='theme-black'] & {
+    color: $chart-color-black;
+  }
+}
+// 标签颜色
+@mixin btn_info_color($color) {
+  background-color: $color;
+  [class='theme-white'] & {
+    color: $btn-info-color-white;
+  }
+  [class='theme-black'] & {
+    color: $btn-info-color-black;
+  }
+}

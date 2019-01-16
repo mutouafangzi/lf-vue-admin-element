@@ -15,13 +15,22 @@ module.exports = {
     // 编译发布的根目录，可配置为资源服务器域名或者cdn域名
     assetsPublicPath: '/',
     // 需要使用proxyTable代理的接口(可以跨域)
-    proxyTable: {},
+    proxyTable: {
+      // 对端口进行代理
+      '/api/': {  
+        target: 'http://localhost:3000',
+  	    changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    },
 
     // Various Dev Server settings
     // 开发时候的访问域名。可以通过环境变量自己设置。
     host: 'localhost', // can be overwritten by process.env.HOST
     // 开发时候的端口。可以通过环境变量PORT设定。如果端口被占用了，会随机分配一个未被使用的端口
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 8088, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     // 是否自动打开浏览器
     autoOpenBrowser: true,
 

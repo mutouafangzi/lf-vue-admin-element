@@ -25,7 +25,7 @@ let routes = [
     children: [{
       path: 'dashboard',
       component: () =>
-      import ('@/views/dashboard/index.vue')
+      import ('@/views/dashboard/main.js')
     }]
   },
   {
@@ -36,7 +36,7 @@ let routes = [
   // 首页
   {
     path: '/dashboard',
-    component: () => import('@/views/dashboard/index'),
+    component: () => import('@/views/dashboard/main.js'),
   },
   // 文档
   {

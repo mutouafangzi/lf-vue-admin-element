@@ -1,0 +1,61 @@
+$bg:#F2F2F2;
+$dark_gray:#889aa4;
+$light_gray:#eee;
+
+.login-container{
+  position: fixed;
+  height: 100%;
+  width:100%;
+  background-color: $bg;
+  input {
+    background: transparent;
+    //border: 0px;
+    -webkit-appearance: none;
+    border-radius: 5px;
+    padding: 12px 5px 12px 15px;
+    color: $light_gray;
+    height: 47px;
+  }
+  .el-container{
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    width: 900px;
+    height: 435px;
+    position: absolute;
+    /* left: 50%;
+    top: 50%;
+    margin-left: -200px;
+    margin-top: -200px; */
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    .el-aside{
+      background: url("../../assets/loginIn/cat.png") no-repeat;
+      background-size: 420px 435px;
+      line-height: 410px;
+      text-align: center;
+      font-size: 45px;
+      font-weight: bolder;
+      font-family:"Times New Roman",Georgia,Serif;
+      color: rgb(59, 48, 48)
+    }
+    .el-main{
+      .el-form-item{
+        margin-bottom: 10px;
+        .el-form-item__content{
+          width:80%;
+          padding-left: 30px;
+        }
+      }
+      .el-input{
+        margin-top: 30px;
+        .iconfont{
+          font-size: 25px;
+        }
+      }
+    }
+
+  }
+}

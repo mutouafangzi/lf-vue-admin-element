@@ -5,7 +5,7 @@
  */
 
 import template from './index.vue'
-import './style.less'
+import './style.scss'
 import oPanel from '../../../../components/panel/main'
 // 引入组件
 // 图表组件

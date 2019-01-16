@@ -1,5 +1,5 @@
 import template from './index.vue'
-import './style.less'
+import './style.scss'
 
 export default {
   ...template,

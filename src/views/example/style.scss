@@ -1,8 +1,8 @@
-@import "../../../../assets/css/base.vars.less";
+@import "../../../../assets/css/base.vars.scss";
 .report-template {
 
   .block {
-    background: @color-bg;
+    background: $color-bg;
   }
   // 分页
   #pagination-wrap {

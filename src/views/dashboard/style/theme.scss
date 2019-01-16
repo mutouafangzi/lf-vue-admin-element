@@ -1,0 +1,8 @@
+@import url('./style.scss');
+@import "../../assets/css/base.vars.scss";
+.theme-white{
+  .theme($color-bg,$color-tag-bg,$color-text-black,$color-bg,$color-line);//默认的样式
+};
+.theme-black{
+  .theme($color-black-26,$color-black-17,$color-inverse-text,$color-black-17,$color-gray-shadow);
+}

@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import "./router/permission"
 
 //引入一些css文件
 import "normalize.css"

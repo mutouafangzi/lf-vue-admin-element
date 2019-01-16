@@ -1,0 +1,299 @@
+@import "../../../assets/css/base.vars.scss";
+@import "./mixin.scss";
+.ngsoc-wrap{
+  .el-header{
+    padding:17px 15px 0 15px;
+    height:50px !important;
+    // 标签页的样式
+    .el-tabs__header {
+      .el-tabs__nav-wrap{
+        text-overflow: ellipsis;
+        .el-tabs__nav{
+          max-width: 90%;
+          overflow: hidden;
+          .el-button--mini{
+            padding: 7px 4px;
+          }
+          .el-button{
+            background-color: transparent;
+            border: 1px solid transparent;
+            // color: $fcolor;
+            @include font_color($background-color-white);
+          }
+        }
+        .more-btn{
+          // background-color: $charts-color;
+          @include charts_color($chart-color-white);
+          border: 1px solid transparent;
+          padding: 7px;
+          span{
+            box-sizing: border-box;
+            padding-top: 2px;
+            display: inline-block;
+            width: 12px;
+            text-align: center;
+            transform: rotate(90deg);
+          }
+        }
+      }
+      .el-tabs__nav-wrap::after{
+        display: none;
+      }
+      .el-radio-button{
+        height: 30px;
+        line-height: 30px;
+        margin: 0px 2px;
+        .tab-text-wrap{
+          display: inline-block;
+          // height: 13px;
+          max-width: 140px;
+          // width: 90px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          vertical-align: middle;
+        }
+      }
+      .el-radio-button__inner{
+        display: block;
+        padding: 0px 0px 0px 10px;
+        border: 0px !important;
+        // color: $fcolor;
+        @include font_color($background-color-white);
+        box-shadow: 0px 0px 0px 0px !important;
+        border-radius: 2px;
+        // background-color: $labelcolor !important;
+        @include btn_info_color($btn-info-color-white);
+        height: 30px;
+        line-height: 2;
+      }
+      .el-radio-button__orig-radio:checked+.el-radio-button__inner{
+        // border-color: $labelcolor !important;
+        @include border_color($box-shadow-white);
+        border-bottom: 2px solid $color-primary !important;
+        // background-color: $charts-color !important;
+        @include charts_color($chart-color-white);
+        // min-height: 30px;
+      }
+      .el-radio-button:hover{
+        // color: $fcolor;
+        @include font_color($background-color-white);
+      }
+    }
+    .global-btn-wrap{
+      display: flex;
+      justify-content: flex-end;
+      .el-button.is-plain:focus{
+        // background: $bgcColor;
+        @include bg_color($background-color-white);
+        // border-color: $box-shadow;
+        @include border_color($box-shadow-white)
+      }
+    }
+    // 右边区域的各种设置小功能
+    .set-item-wrap{
+      display: flex;
+      overflow: hidden;
+      // flex: 1;
+      justify-content: flex-end;
+      .picker-box{
+        // flex-grow: 0;
+        flex-shrink: 0;
+      }
+      .refresh-time-wrap{
+        width: 150px;
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+      .el-select{
+        margin: 0 7px;
+      }
+      .el-button{
+        margin: 0 5px;
+      }
+    }
+  }
+  .el-main{
+    padding: 0px;
+    .panel .panel-body{
+      padding: 0px !important;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    .panel .panel-heading{
+      // color: @fcolor;
+      @include font_color($background-color-white);
+    }
+  }
+
+  .el-button--text{
+    // color: @fcolor;
+    @include font_color($background-color-white);
+  }
+  .el-button--info {
+    // color: @fcolor;
+    @include font_color($background-color-white);
+    // background-color: @labelcolor;
+    @include btn_info_color($btn-info-color-white);
+    // border-color: @labelcolor;
+    @include border_color($box-shadow-white);
+  }
+  .add-scene-wrap{
+    .el-input{
+      width: 80%;
+    }
+  }
+  .edit-scene-wrap{
+    .el-input{
+      width: 80%;
+    }
+  }
+  // 新增图表弹窗
+  .add-echarts-wrap{
+    .el-dialog{
+      // background-color: @bgcColor !important;
+      @include bg_color($background-color-white);
+      .el-dialog__header{
+        .el-dialog__title{
+          // color: @fcolor;
+          @include font_color($background-color-white);
+        }
+      }
+      .echarts-seacher-area{
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 15px;
+        .el-form{
+          width: 40%;
+          display: flex;
+          .el-form-item{
+            margin-right: 5px;
+            margin-bottom: 5px;
+          }
+        }
+      }
+      .echarts-content-area{
+        padding: 0 10px;
+        // color: @fcolor;
+        @include font_color($background-color-white);
+        .echarts-list-wrap{
+          .echarts-info-wrap{
+            // background-color: @charts-color;
+            @include charts_color($chart-color-white);
+            margin: 10px;
+            display: inline-block;
+            width: 300px;
+            padding: 15px;
+            // border: 1px solid @box-shadow;
+            border-width: 1px;
+            border-style: solid; 
+            @include border_color($box-shadow-white);
+            border-radius: 4px;
+            // box-shadow: 0 2px 12px 0 @box-shadow;
+            @include box_shadow_color($chart-color-white);
+            .echarts-icon-wrap{
+              position: relative;
+              .input-checkbox{
+                position: absolute;
+                right: 0px;
+                top: 0px;
+              }
+              .flag-checked{
+                position: absolute;
+                top: 0px;
+                right: -20px;
+                display:inline-block;
+                width: 50px;
+                height: 24px;
+                line-height: 24px;
+                text-align: center;
+                font-size: 12px;
+                color: $color-white;
+                padding: 0 5px;
+                background: $color-warning;
+                &:after {
+                  position: absolute;
+                  content: '';
+                  right: 0px;
+                  bottom: -4px;
+                  width: 0;
+                  height: 0;
+                  border-top: 4px solid $color-warning;
+                  border-right: 5px solid transparent;
+                }
+              }
+              .is-check { }
+            }
+            .echarts-text-wrap{
+              display: flex;
+              flex: 1;
+              div{
+                flex: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .charts-wrap{
+    .panel{
+      border-radius: 2px;
+      // background-color: @charts-color;
+      @include charts_color($chart-color-white);
+      // border: 1px solid @box-shadow;
+      border-radius: 4px;
+      // box-shadow: 0 2px 12px 0 @box-shadow;
+      @include box_shadow_color($chart-color-white);
+    }
+  }
+  // 态势大屏弹窗
+  .situation-screen-wrap{
+    .thumbnail-list-wrap{
+      display: flex;
+      .thumbnail-wrap{
+        flex: 1;
+        // width: 373px;
+        .content-wrap{
+          margin: auto;
+          height: 219px;
+          width: 373px;
+          position: relative;
+        }
+        .screen-img-wrap{  }
+        .screen-text-wrap{
+          position: absolute;
+          bottom: 25px;
+          left: 0px;
+          height: 50px;
+          line-height: 50px;
+          box-sizing: border-box;
+          padding: 0px 15px;
+          width: 373px;
+          border-radius: 2px;
+          // box-shadow: 0px 0px 2px 0px rgba(255,255,255,.7) inset;
+          @include box_shadow_color($chart-color-white);
+          background: rgba(0, 0, 0, 0.8);
+        }
+      }
+    }
+  }
+  .table-box {
+    /*width: 1160px;*/
+    height: 600px;
+    /*overflow: auto;*/
+    .el-table {
+      max-width: none;
+    }
+    .table-text-wrap{
+      overflow: hidden;
+      width: 100%;
+      .table-text-p-wrap{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

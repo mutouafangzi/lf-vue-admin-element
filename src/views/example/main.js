@@ -1,5 +1,5 @@
 import template from './index.vue'
-import './style.less'
+import './style.scss'
 import oPanel from '../../../../components/panel/main'
 import treeSelectInput from '../components/treeInput/main'
 // 创建组件的方法

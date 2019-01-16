@@ -288,7 +288,7 @@ export default {
       }
       pdfMake.createPdf(dd).open();
       //图片格式转换
-        /* var x = this.ImageDataURL(["./人生3.jpg","./人生3.jpg","./人生3.jpg"]);
+        var x = this.ImageDataURL(["./人生3.jpg","./人生3.jpg","./人生3.jpg"]);
         x.oncomplete = function () {
             var imgs = new Array();
             for (let key in this.imgdata) {
@@ -348,9 +348,9 @@ export default {
                 }
             }
             pdfmake.createPdf(content).download;
-        } */
+        }
     },
-    /* ImageDataURL:function (urls) {//urls必須是字符串或字符串數組
+    ImageDataURL:function (urls) {//urls必須是字符串或字符串數組
         
         this.oncomplete = function(){};
         this.getDataURL = function(url, index) {
@@ -404,7 +404,7 @@ export default {
             this.totalnum = 1;
             this.getDataURL(urls, 0);
         }
-    }, */
+    },
       
     /* 绘制图表 */
     drawBar(){
