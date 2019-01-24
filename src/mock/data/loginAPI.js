@@ -1,4 +1,6 @@
-import { param2Obj } from '@/utils'
+var Mock = require('mockjs')
+// import { param2Obj } from '@/utils'
+// let param2Obj = require('@/utils')
 
 const userMap = {
   admin: {
@@ -17,11 +19,17 @@ const userMap = {
   }
 }
 
-export default {
+const loginAPI = {
   // config可以理解为请求时传入的参数
   loginByUsername: config => {
+    console.log('解析config', config)
     const { username } = JSON.parse(config.body)
-    return userMap[username]
+    return {
+      'statusCode': 200,
+      'messages': [ '用户登录成功' ],
+      'data': userMap[username]
+      
+    }
   },
   // 获取用户信息
   getUserInfo: config => {
@@ -36,3 +44,40 @@ export default {
   },
   logout: () => 'success'
 }
+
+module.exports = function (app) {
+  // 登录相关
+  app.post('/api/user/login/param2Obj', function(req, res) {
+    res.send(Mock.mock({
+      'statusCode': 200,
+      'messages': [
+        '获取成功'
+      ],
+      /* 厂商 */
+      'data':loginAPI.loginByUsername
+    }));
+  });
+  app.get('/api/user/info', function(req, res) {
+    res.send(Mock.mock({
+      'statusCode': 200,
+      'messages': [
+        '获取成功'
+      ],
+      /* 厂商 */
+      'data':loginAPI.getUserInfo
+    }));
+  });
+
+  app.post('/api/user/logout', function(req, res) {
+    res.send(Mock.mock({
+      'statusCode': 200,
+      'messages': [
+        '获取成功'
+      ],
+      /* 厂商 */
+      'data':loginAPI.logout
+    }));
+  });
+}
+
+

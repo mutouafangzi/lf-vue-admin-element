@@ -1,5 +1,10 @@
 <template>
   <div :class="themeColor" id="theme-wrap" allowfullscreen="true">
+    <div>
+      <p>{{resDataOne}}</p>
+      <p>{{resDataTwo}}</p>
+      <p>{{user_info}}</p>
+    </div>
     <!-- @keydown="exitScreen($event)"-->
     <div class="ngsoc-wrap">
       <!--态势标签-->

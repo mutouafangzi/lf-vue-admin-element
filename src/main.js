@@ -23,8 +23,11 @@ import locale from 'element-ui/lib/locale/lang/en'
 import echarts from 'echarts'
 import "element-ui/lib/theme-chalk/index.css"
 // 引入mock
-import "./mock/mockServer"
-
+// import "./mock/index.js"
+// 引入axios
+import axios from 'axios'
+import https from './api/request.js'
+Vue.prototype.$https = https 
 
 Vue.use(ElementUI, { locale });
 Vue.prototype.$echarts = echarts 

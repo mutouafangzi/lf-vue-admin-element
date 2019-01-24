@@ -1,9 +1,3 @@
-/**
- * Created by lifang01
- * 2018/5/18
- * 安全态势
- */
-
 // 态势大屏缩略图
 import imgUserAction from '@/assets/images/situation-user-action.png'
 import imgNetworkAttack from '@/assets/images/situation-network-attack.png'
@@ -17,18 +11,28 @@ import oPanel from '@/components/base-panel/main.js'
 // 引入方法
 import { formatDate,chartIcon } from '@/assets/js/utils.js'
 import situationUtils from './components/utils/situationUtils.js'
-import request from '@/utils/request'
 // 拖拽插件
 import draggable from 'vuedraggable'
 import VueGridLayout from 'vue-grid-layout'
 var GridLayout = VueGridLayout.GridLayout
 var GridItem = VueGridLayout.GridItem
 
+// test 
+import { LOGIN } from "@/api/login.js";
+
 export default {
   ...template,
   name: 'situation',
   data () {
     return {
+      // TEST
+      user: {
+        username: 'admin',
+        pass: '1234321'
+      },
+      user_info: {},
+      resDataOne: '',
+      resDataTwo: '',
       // 顶部区域的数据
       // 态势标签列表
       tabLists: [ ],
@@ -262,13 +266,19 @@ export default {
   },
   props: { },
   methods: {
+    async login(){
+      let user_info = await LOGIN(this.user)
+      this.user_info = user_info
+      console.log('请求回来的值是', user_info)
+    },
+
     // 顶部方法
     // 页面初始化
     init () {
       // 设置当前页标识
       this.$store.dispatch('setCurrentPageFlag', this.pageFlag)
       // 常用仪表板标签组的获取
-      request('get', `/api/situation/dashboard/labels/list`, {queryParams: null})
+      this.$https('get', `/api/situation/dashboard/labels/list`, {queryParams: null})
         .then((res) => {
           if (res.statusCode === 200) {
             let result = res.data
@@ -288,7 +298,7 @@ export default {
           console.log(e)
         })
       // 当前主题的获取
-      request('get', `/api/situation/dashboard/skin/config`, {queryParams: null})
+      this.$https('get', `/api/situation/dashboard/skin/config`, {queryParams: null})
         .then((res) => {
           if (res.statusCode === 200) {
             let result = res.data
@@ -317,7 +327,7 @@ export default {
           console.log(e)
         })
       // 获取全部的图表信息
-      request('get', `/api/resource/common/chart-info-custom`, {queryParams: null})
+      this.$https('get', `/api/resource/common/chart-info-custom`, {queryParams: null})
         .then((res) => {
           if (res.statusCode === 200) {
             let result = res.data
@@ -432,19 +442,6 @@ export default {
         this.popoverShow = false
       }
     },
-    // 更多中，态势筛选
-    /* filterScene: function (sceneSearch, value) {
-      // console.log('筛选', sceneSearch, value)
-      if (!sceneSearch) return true
-      return value.name.indexOf(sceneSearch) !== -1
-      /!* let arr
-      if (!sceneSearch) {
-        arr = value
-      } else {
-        arr = value.filter(item => item.name.indexOf(sceneSearch) >= 0)
-      }
-      return arr *!/
-    }, */
     // 删除，常用仪表板标签中，常用标签的删除
     clickCommonTabsDelete (value) {
       // console.log('点击某一项', value, this.tabLists)
@@ -540,233 +537,6 @@ export default {
           console.log(e)
         })
     },
-    // 更多弹窗的每个场景删除按钮
-    /* deleteScene (value) {
-      let that = this
-      that.$confirm('此操作将永久删除该项, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        that.$http('delete', `/api/situation/dashboard/delete/${value.id}`, {queryParams: null})
-          .then((res) => {
-            if (res.statusCode === 200) {
-              let flag = that.tabLists.filter(item => item.id === value.id).length
-              // console.log('效果', that.tabLists, value.id, flag)
-              // 是否在常用列表中
-              if (flag > 0) {
-                // 常用列表里删除一条
-                that.clickCommonTabsDelete(value)
-              }
-              that.$message({
-                showClose: true,
-                message: res.messages[0],
-                type: 'success'
-              })
-              // 请求，更新更多列表
-              that.getSituationLists()
-            } else {
-              this.$message({
-                showClose: true,
-                message: res.messages[0],
-                type: 'error'
-              })
-            }
-          })
-          .catch((e) => {
-            console.log(e)
-          })
-      }).catch(() => {
-        that.$message({
-          showClose: true,
-          type: 'info',
-          message: '已取消删除'
-        })
-      })
-    }, */
-    // 更多弹窗的新增按钮
-    /* addScene () {
-      this.addSceneDialog = true
-      // 获取的人员信息
-      this.$http('get', `/api/system/common/role-info-tree`, {queryParams: null})
-        .then((res) => {
-          if (res.statusCode === 200) {
-            // console.log(res)
-            let result = res.data
-            // 共享的人员信息
-            this.roles = result
-          } else {
-            this.$message({
-              message: res.messages[0],
-              type: 'error'
-            })
-          }
-        })
-        .catch((e) => {
-          console.log(e)
-        })
-    }, */
-    // 更多弹窗的每个场景编辑按钮
-    /* editScene (row) {
-     // 获取的人员信息
-     this.$http('get', `/api/system/common/role-info-tree`, {queryParams: null})
-     .then((res) => {
-     if (res.statusCode === 200) {
-     // console.log(res)
-     let result = res.data
-     // 共享的人员信息
-     this.roles = result
-     } else {
-     this.$message({
-     showClose: true,
-     message: res.messages[0],
-     type: 'error'
-     })
-     }
-     })
-     .catch((e) => {
-     console.log(e)
-     })
-     // 编辑前的数据
-     this.$http('get', `/api/situation/dashboard/before-update/${row.id}`, {queryParams: null})
-     .then((res) => {
-     if (res.statusCode === 200) {
-     this.editSceneDialog = true
-     // console.log(res)
-     let result = res.data
-     // 更多仪表板显示
-     this.editSceneForm = result
-     } else {
-     this.$message({
-     showClose: true,
-     message: res.messages[0],
-     type: 'error'
-     })
-     }
-     })
-     .catch((e) => {
-     console.log(e)
-     })
-     }, */
-    // 更多弹窗中的新增弹窗取消按钮
-    /* addSceneDeleteBtn () {
-      this.addSceneDialog = false
-      this.$refs.addSceneForm.resetFields()
-    }, */
-    // 更多弹窗中的新增弹窗确认按钮
-    /* addSceneOkBtn () {
-      this.$refs.addSceneForm.validate((valid) => {
-        if (valid) {
-          let data = {
-            name: this.addSceneForm.name, // 场景名称
-            descr: this.addSceneForm.descr, // 场景描述
-            isShared: this.addSceneForm.isShared, // 全部 共享 不共享
-            sharedRole: this.addSceneForm.sharedRole // 共享角色
-          }
-          this.$http('post', `/api/situation/dashboard/insert`, {queryParams: data})
-            .then((res) => {
-              if (res.statusCode === 200) {
-                // 更多列表里新增一条
-                data.id = res.data
-                // 常用标签中新增
-                this.clickSituationList(data)
-                this.$message({
-                  showClose: true,
-                  message: res.messages[0],
-                  type: 'success'
-                })
-                this.addSceneDialog = false
-                this.$refs.addSceneForm.resetFields()
-                // 请求，更新更多列表
-                this.getSituationLists()
-                // 再次请求仪表板列表
-                /!* // 获取全部仪表板信息（安全态势列表，更多的列表）
-                 this.$http('get', `/api/situation/dashboard/list`, {queryParams: null})
-                 .then((res) => {
-                 if (res.statusCode === 200) {
-                 // this.moreDialog = true
-                 let result = res.data
-                 // 更多仪表板显示
-                 this.situationLists = result
-                 }
-                 })
-                 .catch((e) => {
-                 console.log(e)
-                 }) *!/
-              } else {
-                this.$message({
-                  showClose: true,
-                  message: res.messages[0],
-                  type: 'error'
-                })
-              }
-            })
-            .catch((e) => {
-              console.log(e)
-            })
-        } else {
-          // console.log('error submit!!')
-          return false
-        }
-      })
-    }, */
-    // 更多弹窗中的编辑弹窗取消按钮
-    /* editSceneDeleteBtn () {
-      this.editSceneDialog = false
-      this.$refs.editSceneForm.resetFields()
-    }, */
-    // 更多弹窗中的编辑弹窗确认按钮
-    /* editSceneOkBtn () {
-     let data = {
-     id: this.editSceneForm.id, // 主键
-     name: this.editSceneForm.name, // 场景名称
-     descr: this.editSceneForm.descr, // 场景描述
-     isShared: this.editSceneForm.isShared, // 全部 共享 不共享
-     sharedRole: this.editSceneForm.sharedRole// 共享角色
-     }
-     this.$http('post', `/api/situation/dashboard/update`, {queryParams: data})
-     .then((res) => {
-     if (res.statusCode === 200) {
-     // console.log(res)
-     this.$message({
-     showClose: true,
-     message: res.messages[0],
-     type: 'success'
-     })
-     // 更新更多列表
-     this.situationLists = this.situationLists.map(item => { return (item.id === data.id) ? data : item })
-     // 更新常用标签
-     this.$http('get', `/api/situation/dashboard/labels/list`, {queryParams: null})
-     .then((res) => {
-     if (res.statusCode === 200) {
-     let result = res.data
-     // 常用仪表板类型
-     this.tabLists = result
-     } else {
-     this.$message({
-     showClose: true,
-     message: res.messages[0],
-     type: 'error'
-     })
-     }
-     })
-     .catch((e) => {
-     console.log(e)
-     })
-     // console.log(this.situationLists)
-     this.editSceneDialog = false
-     } else {
-     this.$message({
-     showClose: true,
-     message: res.messages[0],
-     type: 'error'
-     })
-     }
-     })
-     .catch((e) => {
-     console.log(e)
-     })
-     }, */
     // 点击态势大屏按钮
     clickSituationScreen () {
       this.situationScreenDialog = true
@@ -1317,21 +1087,6 @@ export default {
     },
 
     // 组件加载
-    /*doLoading () {
-      const that = this
-      // 设置图表的宽高
-      /!*that.style = function (item) {
-        // console.log('宽', item)
-        let sreenW = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
-        console.log('宽', sreenW)
-        return {
-          width: Math.floor((sreenW - 90) / 16 * item.w - 50) + 'px',
-          height: item.h * 80 - 41 + 'px'
-        }
-      }*!/
-      // loading遮罩取消
-      that.loading = false
-    },*/
     getBoxheight (h) {
       let height = h * 45 - 71 + 'px'
       return height
@@ -1470,12 +1225,69 @@ export default {
     } */
   },
   created () {
-    this.init()
+    // this.init()
+    // console.log('封装的请求', this.$https)
+    // 常用仪表板标签组的获取
+    this.$https('get', `/api/situation/dashboard/labels/list`, {queryParams: null})
+    .then((res) => {
+      // console.log('請求回來的~~~~', res)
+      if (res.statusCode == 200) {
+        this.$message({
+          showClose: true,
+          message: res.messages[0],
+          type: 'success'
+        })
+        this.resDataOne = res.data
+        // console.log(this.checkedTab)
+      } else {
+        this.$message({
+          showClose: true,
+          message: res.messages[0],
+          type: 'error'
+        })
+      }
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+
+    this.$https('get', `/api/test.action`, {queryParams: null})
+    .then((res) => {
+      console.log('--------', res)
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+
+    let aaaa = 'id1'
+    this.$https('post', `/api/situation/dashboard/labels/update`, {queryParams: aaaa})
+    .then((res) => {
+      // console.log('請求回來的~~~~', res)
+      if (res.statusCode == 200) {
+        this.$message({
+          showClose: true,
+          message: res.messages[0],
+          type: 'success'
+        })
+        this.resDataTwo = res.data
+        // console.log(this.checkedTab)
+      } else {
+        this.$message({
+          showClose: true,
+          message: res.messages[0],
+          type: 'error'
+        })
+      }
+    })
+    .catch((e) => {
+      console.log(e)
+    })
     // console.log(this.checkedTab)
     // this.doLoading()
     // console.log('走了credted')
   },
   mounted () {
+    this.login()
     // this.doLoading()
     // console.log('走了mounted')
   },

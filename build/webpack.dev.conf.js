@@ -9,58 +9,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
-var port = process.env.PORT || config.dev.port
-// body-parser在中间件中对传入的请求体进行解析（response body）
-var bodyParser = require('body-parser')
-var fs = require('fs')
-
-//  引入模块
-consot express = require('express')
-// 创建应用对象
-var apiServer = express()
-apiServer.use(bodyParser.urlencoded({extended: true}))
-apiServer.use(bodyParser.json())
-
-var apiRouter = express.Router()
-apiRouter.route('/:apiName').all(
-  function (req, res) {
-    fs.readFile('../src/mock/data/index.js', 'utf8', function (err, data) {
-      if (err) throw err
-      var data = JSON.parse(data)
-      console.log('数据', data)
-      if (data[req.params.apiName]) {
-        res.json(data[req.params.apiName])  
-      }
-      else {
-        res.send('no such api name')
-      }
-    })
-  }
-)
-
-apiServer.use('/api', apiRouter)
-apiServer.listen(port+1, function (err) {
-  if(err){
-    console.log(err)
-    return
-  }
-  console.log('listening监听 at http://localhost:'+(port+1)+ '\n')
-})
-
-var jsonServer = require('json-server') //引入文件
-var apiServer = jsonServer.create(); //创建服务器
-var apiRouter = jsonServer.router('db.json') //引入json 文件 ，这里的地址就是你json文件的地址，我再static下的建立了一个文件夹mock，然后把json文件放在里面
-var middlewares = jsonServer.defaults(); //返回JSON服务器使用的中间件。
-apiServer.use(middlewares)
-apiServer.use('/api',apiRouter)
-apiServer.listen( 9527 ,function(err){ //json服务器端口:9527
-  if(err){
-    console.log(err)
-    return
-  }
-  else
-    console.log('JSON Server is 运行')  //json server成功运行会在git bash里面打印出'JSON Server is running'
-
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
