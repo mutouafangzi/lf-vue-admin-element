@@ -263,11 +263,15 @@ let routes = [
     children: [
       {
         path: 'creatArticle',
-        component: ()=>import('@/views/example/creatArticle')
+        component: ()=>import('@/views/example/article/creatArticle')
       },
       {
         path: 'articleList',
-        component: ()=>import('@/views/example/articleList')
+        component: ()=>import('@/views/example/article/articleList')
+      },
+      {
+        path: 'koaServer',
+        component: ()=>import('@/views/example/koa/main.vue')
       }
     ]
   },

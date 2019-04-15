@@ -9,6 +9,7 @@
     "start": "npm run dev",
     "mock": "node src/mock/server.js",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
+    "koa": "node src/server/server.js",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
@@ -21,6 +22,7 @@
     "jquery": "^3.3.1",
     "js-cookie": "^2.2.0",
     "jspdf": "^1.4.1",
+    "koa": "^2.7.0",
     "mockjs": "^1.0.1-beta3",
     "moment": "^2.23.0",
     "normalize.css": "^8.0.0",
@@ -31,6 +33,7 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@babel/plugin-transform-async-to-generator": "^7.4.0",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.1",

@@ -32,6 +32,22 @@
         <el-menu-item index="1-2">指令权限</el-menu-item>
       </router-link>
     </el-submenu>
+    <el-submenu index="4">
+      <template slot="title">
+        <i class="icon iconfont icon-permissions"></i>&nbsp;
+        <span>explame</span>
+      </template>
+      <router-link to="/example/koaServer">
+        <el-menu-item index="4-1">koa服务</el-menu-item>
+      </router-link>
+      <router-link to="/example/articleList">
+        <el-menu-item index="4-2">文章列表</el-menu-item>
+      </router-link>
+      <router-link to="/example/creatArticle">
+        <el-menu-item index="4-3">创建文章</el-menu-item>
+      </router-link>
+      
+    </el-submenu>
 
     <router-link to="/icon">
       <el-menu-item index="5">

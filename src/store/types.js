@@ -1,6 +1,6 @@
 /**
  * Created by lifang01
- * 常量，便与维护
+ * 常量，便于维护
  * 2018/6/13.
  */
 export const SET_THEME_COLOR = 'set_theme_color'
