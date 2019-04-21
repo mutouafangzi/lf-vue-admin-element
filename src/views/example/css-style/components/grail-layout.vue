@@ -1,0 +1,74 @@
+<!--  -->
+<template>
+<div class="wrap">
+  <div id="header">header</div>
+  <div id="content">
+    <div id="middle">
+      <p>middle</p>
+      <p>middle</p>
+      <p>middle</p>
+    </div>
+    <div id="left">left</div>
+    <div id="right">right</div>
+  </div>
+  <div id="footer">footer</div>
+</div>
+  
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+    };
+  },
+
+  components: {},
+
+  computed: {},
+
+  mounted: {},
+
+  methods: {}
+}
+
+</script>
+<style lang='scss' scoped>
+.wrap{
+  min-width: 600px;
+}
+#header,#footer{
+    height: 50px;
+    width: 100%;
+    border: 1px solid;
+    background-color: grey;
+}
+#content{ 
+  overflow: hidden;
+  padding: 0px 200px;
+}
+#left,#right{
+  width: 200px;
+  height: 200px;
+  background-color:pink;
+}
+#middle{
+  background-color: green;
+  width: 100%;
+}
+#middle,#left,#right{
+  float: left;
+  padding-bottom: 10000px;
+  margin-bottom: -10000px;
+}
+#left{
+  margin-left: -100%;
+  position: relative;
+  left: -200px;
+}
+#right{
+  margin-left: -200px;
+  position: relative;
+  left: 200px;
+}
+</style>

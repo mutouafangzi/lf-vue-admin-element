@@ -46,6 +46,15 @@
       <router-link to="/example/creatArticle">
         <el-menu-item index="4-3">创建文章</el-menu-item>
       </router-link>
+      <router-link to="/example/testWebsocket">
+        <el-menu-item index="4-4">websocket</el-menu-item>
+      </router-link>
+      <router-link to="/example/bigscreen">
+        <el-menu-item index="4-5">bigScreen</el-menu-item>
+      </router-link>
+      <router-link to="/example/cssstyle">
+        <el-menu-item index="4-6">cssstyle</el-menu-item>
+      </router-link>
       
     </el-submenu>
 

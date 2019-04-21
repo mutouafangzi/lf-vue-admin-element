@@ -272,7 +272,19 @@ let routes = [
       {
         path: 'koaServer',
         component: ()=>import('@/views/example/koa/main.vue')
-      }
+      },
+      {
+        path: 'bigscreen',
+        component: ()=>import('@/views/example/big-screen/main.vue')
+      },
+      {
+        path: 'testWebsocket',
+        component: ()=>import('@/views/example/websocket/main.vue')
+      },
+      {
+        path: 'cssstyle',
+        component: ()=>import('@/views/example/css-style/main.vue')
+      },
     ]
   },
   // 路由嵌套
