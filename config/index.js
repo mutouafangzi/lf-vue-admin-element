@@ -6,6 +6,7 @@
 const path = require('path')
 
 module.exports = {
+  baseUrl: 'http://localhost:9527',
   // 开发环境的一个基本配置
   dev: {
 

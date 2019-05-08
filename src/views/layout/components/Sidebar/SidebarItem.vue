@@ -35,7 +35,7 @@
     <el-submenu index="4">
       <template slot="title">
         <i class="icon iconfont icon-permissions"></i>&nbsp;
-        <span>explame</span>
+        <span>example</span>
       </template>
       <router-link to="/example/koaServer">
         <el-menu-item index="4-1">koa服务</el-menu-item>
@@ -53,7 +53,7 @@
         <el-menu-item index="4-5">bigScreen</el-menu-item>
       </router-link>
       <router-link to="/example/cssstyle">
-        <el-menu-item index="4-6">cssstyle</el-menu-item>
+        <el-menu-item index="4-6">cssStyle</el-menu-item>
       </router-link>
       
     </el-submenu>
@@ -141,6 +141,15 @@
       </router-link>
       <router-link to="/graphic/panorama">
         <el-menu-item index="25-3">全景看房</el-menu-item>
+      </router-link>
+    </el-submenu>
+    <el-submenu index="26">
+      <template slot="title">
+        <i class="icon iconfont icon-iconhomeh5"></i>&nbsp;
+        <span>动画</span>
+      </template>
+      <router-link to="/animation/css3-animation">
+        <el-menu-item index="26-1">css3动画</el-menu-item>
       </router-link>
     </el-submenu>
     <router-link to="/tab">

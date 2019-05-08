@@ -35,6 +35,25 @@ Vue.prototype.$echarts = echarts
 
 Vue.config.productionTip = false
 
+let data = JSON.parse(window.sessionStorage.getItem('permission'))
+
+router.beforeEach((to, from, next) => {
+  console.log('路由', to, from, next)
+  // 首次登陆
+  if(!data && to.path !== '/login'){
+    next({path: '/login'})
+  } else {
+    console.log('')
+    next()
+    if (to.path) {
+      console.log('to.path',to.path)
+      next()
+    } else {
+      next({ path: '/404' })
+    }
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -1,4 +1,4 @@
-import { SET_THEME_COLOR, SET_CURRENT_PAGE_FLAG, SET_OPEN_DASHBOARD_ID } from './types.js'
+import { SET_THEME_COLOR, SET_CURRENT_PAGE_FLAG, SET_OPEN_DASHBOARD_ID,LOGIN,SET_USER_TOKEN } from './types.js'
 
 export default {
   // 设置或者更新主题
@@ -13,5 +13,13 @@ export default {
   // 设置打开的仪表板id
   [SET_OPEN_DASHBOARD_ID] (state, data) {
     state.openDashboardId = data
+  },
+  // 设置用户信息
+  [LOGIN](state,data){
+    console.log('触发了登陆')
+    state.loginInfo = data
+  },
+  [SET_USER_TOKEN](state,data){
+    state.token = data
   }
 }

@@ -3,17 +3,6 @@ import Router from 'vue-router'
 
 import Layout from '../views/layout/Layout.vue'
 
-/* import Dashboard from '../views/dashboard/index.vue'
-import Table from '../views/table/index.vue'
-import Example from '../views/example/index.vue'
-import Nested from '../views/nested/index.vue'
-import Errors from '../views/errors/index.vue'
-import ErrorLog from '../views/errlog/index.vue'
-import Excel from '../views/excel/index.vue'
-import Zip from '../views/zip/index.vue'
-import Theme from '../views/theme/index.vue'
-import Clipboard from '../views/clipboard/index.vue'
-import I18n from '../views/I18n/index.vue' */
 
 Vue.use(Router)
 
@@ -210,6 +199,19 @@ let routes = [
         // 全景看房
         path: 'panorama',
         component: ()=>import('@/views/graphic/panorama')
+      }
+    ]
+  },
+  // 动画
+  {
+    path: '/animation',
+    component: Layout,
+    redirect: 'noredirect',
+    children: [
+      {
+        // css3动画
+        path: 'css3-animation',
+        component: ()=>import('@/views/animation/css3-animation/index')
       }
     ]
   },

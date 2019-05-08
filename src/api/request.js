@@ -2,15 +2,17 @@ import axios from "axios"
 import {Message,MessageBox} from "element-ui"
 import store from "../store"
 import { getToken } from '@/utils/auth'
+import config from '../../config'
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: process.env.BASE_API, // api的base_url
+  baseURL: config.baseURL, // api的base_url
   timeout: 15000 // 请求超时时间
 });
 
 // 添加请求拦截器
 service.interceptors.request.use(function (config) {
+  console.log('被劫持')
   // 在发送请求之前做些什么
   // 在这个项目中是要加上token
   if(store.getters.token){

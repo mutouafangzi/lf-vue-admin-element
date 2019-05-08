@@ -1,4 +1,4 @@
-import { SET_THEME_COLOR, SET_CURRENT_PAGE_FLAG, SET_OPEN_DASHBOARD_ID } from './types.js'
+import { SET_THEME_COLOR, SET_CURRENT_PAGE_FLAG, SET_OPEN_DASHBOARD_ID, LOGIN } from './types.js'
 
 export default {
   setThemeColor ({commit}, themeColor) {
@@ -9,5 +9,8 @@ export default {
   },
   setOpenDashboardId ({commit}, openDashboardId) {
     commit(SET_OPEN_DASHBOARD_ID, openDashboardId)
+  },
+  Login({commit}, loginInfo){
+    commit(LOGIN, loginInfo)
   }
 }
