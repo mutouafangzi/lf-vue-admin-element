@@ -1,25 +1,20 @@
 <!--  -->
 <template>
-  <div>
-    Nested嵌套路由页面
-  </div>
+  <div>Nested嵌套路由页面</div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-    };
+  data() {
+    return {};
   },
 
   methods: {},
 
   computed: {},
 
-  components: {},
-}
-
+  components: {}
+};
 </script>
 <style scoped>
-
 </style>
