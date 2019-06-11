@@ -35,18 +35,16 @@ Vue.prototype.$echarts = echarts
 
 Vue.config.productionTip = false
 
-let data = JSON.parse(window.sessionStorage.getItem('permission'))
+let data = window.sessionStorage.getItem('permission')
 
 router.beforeEach((to, from, next) => {
-  console.log('路由', to, from, next)
-  // 首次登陆
+  console.log(data,to.path,from.path)
   if(!data && to.path !== '/login'){
-    next({path: '/login'})
+    // 未登录直接访问其他非登录页面时，重定位到登陆页面
+    next('/login')
   } else {
-    console.log('')
-    next()
+    // 已经登录，访问非登录页面时
     if (to.path) {
-      console.log('to.path',to.path)
       next()
     } else {
       next({ path: '/404' })

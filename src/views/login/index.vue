@@ -68,7 +68,6 @@ export default {
       return Math.floor(Math.random() * (max - min) + min);
     },*/
     refreshCode() {
-      console.log('hhh')
       this.$refs.identifyCode.refreshCode()
       /*this.identifyCode = "";
       this.makeCode(this.identifyCodes, 4);*/
@@ -80,18 +79,19 @@ export default {
     },
     //登录按钮
     handleLogin(){
-      console.log('点击了')
-      
-      this.$store.dispatch('Login', this.loginForm)
-      .then(() => {
-        console.log('成功')
-        window.sessionStorage.setItem('permission')
-        this.$router.push({ path: '/dashboard' })
-      })
-      .catch(() => {
-        console.log('失败error');
-      })
-      this.login(this.loginForm).then(()=>{console.log('成功了')}).catch(()=>{console.log('失败了')})
+      let that = this
+      that.$store.dispatch('Login', this.loginForm)
+        .then(() => {
+          console.log('成功', this.$router)
+          window.sessionStorage.setItem('permission', 'sssss')
+          that.$router.push({ path: '/dashboard' })
+        })
+        .catch(() => {
+          console.log('失败error');
+        })
+      // this.login(this.loginForm)
+      // .then(()=>{console.log('成功了')})
+      // .catch(()=>{console.log('失败了')})
     }
 
   },

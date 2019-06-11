@@ -16,7 +16,6 @@ export default {
   },
   // 设置用户信息
   [LOGIN](state,data){
-    console.log('触发了登陆')
     state.loginInfo = data
   },
   [SET_USER_TOKEN](state,data){

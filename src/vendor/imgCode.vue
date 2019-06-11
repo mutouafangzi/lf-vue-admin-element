@@ -108,7 +108,6 @@ export default {
       ctx.font = this.randomNum(this.fontSizeMin, this.fontSizeMax) + 'px SimHei'
       //随机数存在的位置，X代表每个数字横向开始的位置
       let x = (i + 1) * this.contentWidth / 5
-      console.log(x);
       //X代表每个数字纵向开始的位置
       let y = this.randomNum(this.fontSizeMax, this.contentHeight - 5)
       //每个文字可以旋转的角度
@@ -163,7 +162,6 @@ export default {
 
     //刷新整个页面
     refreshCode(){
-      console.log('强制刷新')
       this.drawPic()
     }
   },
