@@ -9,16 +9,16 @@ import './css/base.scss'
 import oPanel from '@/components/base-panel/main.js'
 
 // 引入方法
-import { formatDate,chartIcon } from '@/assets/js/utils.js'
+import { formatDate, chartIcon } from '@/assets/js/utils.js'
 import situationUtils from './components/utils/situationUtils.js'
 // 拖拽插件
 import draggable from 'vuedraggable'
 import VueGridLayout from 'vue-grid-layout'
+
+// test
+import { LOGIN } from '@/api/login.js'
 var GridLayout = VueGridLayout.GridLayout
 var GridItem = VueGridLayout.GridItem
-
-// test 
-import { LOGIN } from "@/api/login.js";
 
 export default {
   ...template,
@@ -30,12 +30,12 @@ export default {
         username: 'admin',
         pass: '1234321'
       },
-      user_info: {},
-      resDataOne: '',
-      resDataTwo: '',
+      user_info: '用户信息',
+      resDataOne: '1',
+      resDataTwo: '2',
       // 顶部区域的数据
       // 态势标签列表
-      tabLists: [ ],
+      tabLists: [],
       // 默认选中的态势标签项
       checkedTab: '',
       // 搜索选择的时间
@@ -47,49 +47,58 @@ export default {
         {
           value: '30s',
           label: '每30秒'
-        }, {
+        },
+        {
           value: '1m',
           label: '每1分钟'
-        }, {
+        },
+        {
           value: '5m',
           label: '每5分钟'
-        }, {
+        },
+        {
           value: '10m',
           label: '每10分钟'
-        }, {
+        },
+        {
           value: '30m',
           label: '每30分钟'
-        }, {
+        },
+        {
           value: '1h',
           label: '每1小时'
         }
       ],
       pickerOptions: {
-        shortcuts: [{
-          text: '最近一周',
-          onClick(picker) {
-            const end = new Date();
-            const start = new Date();
-            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-            picker.$emit('pick', [start, end]);
+        shortcuts: [
+          {
+            text: '最近一周',
+            onClick (picker) {
+              const end = new Date()
+              const start = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+              picker.$emit('pick', [start, end])
+            }
+          },
+          {
+            text: '最近一个月',
+            onClick (picker) {
+              const end = new Date()
+              const start = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+              picker.$emit('pick', [start, end])
+            }
+          },
+          {
+            text: '最近三个月',
+            onClick (picker) {
+              const end = new Date()
+              const start = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
+              picker.$emit('pick', [start, end])
+            }
           }
-        }, {
-          text: '最近一个月',
-          onClick(picker) {
-            const end = new Date();
-            const start = new Date();
-            start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-            picker.$emit('pick', [start, end]);
-          }
-        }, {
-          text: '最近三个月',
-          onClick(picker) {
-            const end = new Date();
-            const start = new Date();
-            start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-            picker.$emit('pick', [start, end]);
-          }
-        }]
+        ]
       },
       // 刷新行为开始
       refreshFlag: {},
@@ -116,7 +125,7 @@ export default {
       ], */
       // 更多按钮点击后，已有场景的列表
       situationLists: [
-        /*{
+        /* {
           id: 1,
           name: '一级 1',
           creatorName: '2创建人名字',
@@ -150,7 +159,7 @@ export default {
               creatorName: '2创建人名字'
             }
           ]
-        }*/
+        } */
       ],
       situationTreeProps: {
         children: 'children',
@@ -168,9 +177,7 @@ export default {
         sharedRole: [] // 共享角色
       },
       addSceneRules: {
-        name: [
-          { required: true, message: '请输入态势名称', trigger: 'blur' }
-        ],
+        name: [{ required: true, message: '请输入态势名称', trigger: 'blur' }],
         isShared: [
           { required: true, message: '请选择是否共享', trigger: 'change' }
         ]
@@ -178,7 +185,7 @@ export default {
       // 更多按钮点击后，点击新增的弹窗 默认不显示
       addSceneDialog: false,
       // 新增和编辑弹窗的角色
-      roles: [ ],
+      roles: [],
       // 写死，更多按钮点击后，点击新增的弹窗内表单数据的单选项
       isSharedList: [
         {
@@ -223,14 +230,14 @@ export default {
       // 操作按钮点击后的图表列表弹窗，默认不显示
       addEchartsDialog: false,
       // 操作弹窗内的所有图表
-      echartsIconList: [ ],
+      echartsIconList: [],
       // 操作弹窗内的搜索表单
       echartsSearchForm: {
         classify: ''
       },
       echartsSearchText: '',
       // 图表类型的下拉列表
-      echartsClassifyList: [ ],
+      echartsClassifyList: [],
       // 图表类型的默认值
       addEchartsClass: '请选择图表类型',
       // 选中的图表
@@ -243,15 +250,15 @@ export default {
       newChartLayoutArr: [],
 
       // 内容区所有图表的信息
-      echartsLayout: [ ],
+      echartsLayout: [],
       // 新增图表后布局信息
       updateEchartsLayout: [],
       // 图标加载的遮罩
       // loading: true,
       echartsData: {
         // 图例信息
-        thead: [ ],
-        tbody: [ ]
+        thead: [],
+        tbody: []
       },
       // 下钻弹窗
       drillDownLoading: true,
@@ -264,11 +271,11 @@ export default {
       pageFlag: 'dashboard'
     }
   },
-  props: { },
-  methods: { },
-  filters: { },
-  created () { },
-  mounted () { },
+  props: {},
+  methods: {},
+  filters: {},
+  created () {},
+  mounted () {},
   computed: {},
   components: {
     draggable,
@@ -276,7 +283,5 @@ export default {
     GridItem,
     oPanel
   },
-  watch: {
-    
-  }
+  watch: {}
 }

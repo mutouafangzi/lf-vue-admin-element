@@ -3,8 +3,8 @@ import Vuex from 'vuex'
 import dashboard from './modules/dashboard'
 import user from './modules/user'
 import permission from './modules/permission'
+import login from './modules/login'
 import getters from './getters'
-import actions from './actions'
 
 Vue.use(Vuex)
 
@@ -13,10 +13,10 @@ const store = new Vuex.Store({
     dashboard,
     app,
     user,
-    permission
+    permission,
+    login
   },
-  getters,
-  actions
+  getters
 })
 
 export default store

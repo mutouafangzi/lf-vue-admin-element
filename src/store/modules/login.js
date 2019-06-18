@@ -12,7 +12,8 @@ const loginStore = {
 
   actions: {
     Login ({ commit }, loginInfo) {
-      commit(LOGIN, loginInfo)
+      console.log('---')
+      commit('LOGIN', loginInfo)
     }
   },
 
